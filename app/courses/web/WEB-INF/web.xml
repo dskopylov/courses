@@ -24,12 +24,12 @@
     <servlet>
         <servlet-name>MainServlet</servlet-name>
         <servlet-class>ru.ifmo.de.courses.servlets.MainServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>MainServlet</servlet-name>
         <url-pattern>/index.html</url-pattern>
-        <url-pattern>/course/*</url-pattern>
         <url-pattern>/ru/*</url-pattern>
         <url-pattern>/en/*</url-pattern>
     </servlet-mapping>

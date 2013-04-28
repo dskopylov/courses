@@ -43,7 +43,7 @@ public class MainServlet extends HttpServlet {
     public static Properties en = new Properties();
 
 
-    public void init(){
+    public void init() {
         appProp.put("db.url", getServletContext().getInitParameter("db.url"));
         appProp.put("db.login", getServletContext().getInitParameter("db.login"));
         appProp.put("db.pass", getServletContext().getInitParameter("db.pass"));
@@ -60,9 +60,8 @@ public class MainServlet extends HttpServlet {
 
 
             //en
-            fis = new FileInputStream(path + "en" + en + "ru.properties");
+            fis = new FileInputStream(path + "en" + fs + "en.properties");
             en.load(fis);
-
 
 
         } catch (FileNotFoundException e) {
@@ -91,12 +90,12 @@ public class MainServlet extends HttpServlet {
 
         String command = "";
 
-        if (request.getParameter("type") != null){//Запрошена форма входа
+        if (request.getParameter("type") != null) {//Запрошена форма входа
             CurrentUserAction currentUserAction = new CurrentUserAction(request, response, velocityEngine);
-            if (request.getParameter("type").equals("login")){//Вход пользователя
+            if (request.getParameter("type").equals("login")) {//Вход пользователя
 
                 String result = currentUserAction.processLogin();
-                if (!result.equals("successful")){
+                if (!result.equals("successful")) {
                     //Не удачный вход
                     command = "loginError";
                 }
@@ -113,7 +112,7 @@ public class MainServlet extends HttpServlet {
     /**
      * Метод парсит запрошенную страницу и вызывает необходимый рендерер
      */
-    public void parseRequestedPage(HttpServletRequest request, HttpServletResponse response, String command){
+    public void parseRequestedPage(HttpServletRequest request, HttpServletResponse response, String command) throws IOException {
         String requestedPath = request.getRequestURI();
 
         //Обрезаем из запрошенного URI contextPath
@@ -129,34 +128,65 @@ public class MainServlet extends HttpServlet {
 
         page.setContextPath(request.getContextPath());
 
-        if (command.equals("")){
+
+
+        //Если запрошена главная страница приложения, необходимо определить язык и отфорвадить на нужный язык
+        if (requestedPath.equals("/") || requestedPath.equals("/index.html")) {//Запрошена главная страница без языка
+
+            String language = detectLanguage(request);
+
+            response.sendRedirect(request.getContextPath() + "/" + language + "/index.html");
+
             //Определение запрошенного
-            if (requestedPath.equals("/") || requestedPath.equals("/index.html")){//Запрошена главная страница
-                MainPageRender mainPageRender = new MainPageRender(request, response, velocityEngine);
 
-                page = mainPageRender.renderMainPage(page);
 
-            } else if (requestedPath.startsWith("/course/")){//Страница из курсов
+        } else {//Сюда попадаем уже с языком в адресе
 
+            String[] mas = requestedPath.split("/");
+
+            if (mas.length > 1){
+                String lang = mas[1];
+                if (!(lang.equals("ru") || lang.equals("en"))){
+                    //Если что-то неправильно то посылаем на русский
+                    response.sendRedirect(request.getContextPath() + "/" + "ru" + "/index.html");
+
+                } else {
+                    page.setLanguage(lang);
+                }
             }
 
+            //После этого мы знаем язык в page.getLanguage(). Убираем его из requestedPath
+            requestedPath = requestedPath.replaceAll( page.getLanguage() + "/","");
 
-            else { //Нет такой запрошенной страницы
-                ErrorRender errorRender = new ErrorRender(request, response, velocityEngine);
 
-                page = errorRender.renderError(page);
+            if (command.equals("")) {
+                if (requestedPath.equals("/") || requestedPath.equals("/index.html")) {//Запрошена главная страница
+                    MainPageRender mainPageRender = new MainPageRender(request, response, velocityEngine);
+
+                    page = mainPageRender.renderMainPage(page);
+                } else if (requestedPath.startsWith("/course/")) {//Страница из курсов
+
+                } else { //Нет такой запрошенной страницы
+                    ErrorRender errorRender = new ErrorRender(request, response, velocityEngine);
+
+                    page = errorRender.renderError(page);
+                }
+            } else {
+                if (command.equals("loginError")) {
+                    ErrorRender errorRender = new ErrorRender(request, response, velocityEngine);
+
+                    page = errorRender.renderLoginError(page);
+                }
             }
-        } else {
-            if (command.equals("loginError")){
-                ErrorRender errorRender = new ErrorRender(request, response, velocityEngine);
 
-                page = errorRender.renderLoginError(page);
-            }
         }
-
 
 
         pageRender.renderPage(page);
 
+    }
+
+    private String detectLanguage(HttpServletRequest request){
+        return "ru";
     }
 }
