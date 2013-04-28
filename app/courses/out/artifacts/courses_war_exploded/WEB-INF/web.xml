@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
+    <context-param>
+        <param-name>db.url</param-name>
+        <param-value>jdbc:mysql://192.168.4.21:3306/coursesdev</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>db.login</param-name>
+        <param-value>coursesdev</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>db.pass</param-name>
+        <param-value>jXPjNG2xbub2xLTJ</param-value>
+    </context-param>
+
+
+
+    <servlet>
+        <servlet-name>MainServlet</servlet-name>
+        <servlet-class>ru.ifmo.de.courses.servlets.MainServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>MainServlet</servlet-name>
+        <url-pattern>/index.html</url-pattern>
+        <url-pattern>/course/*</url-pattern>
+    </servlet-mapping>
+
+
+
+</web-app>

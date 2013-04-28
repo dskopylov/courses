@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>$page.getTitle()</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="$page.getContextPath()/jq/css/ui-lightness/jquery-ui-1.10.2.custom.css" rel="stylesheet">
+	<script src="$page.getContextPath()/jq/js/jquery-1.9.1.js"></script>
+	<script src="$page.getContextPath()/jq/js/jquery-ui-1.10.2.custom.js"></script>
+</head>
+<body>
+
+<div>Шапка для всех одинаковая
+    <div>$page.getUserArea()</div>
+</div>
+
+<div>Меню</div>
+
+<div>
+    Содержание страницы:
+
+    <div>
+        $page.getContent()
+    </div>
+</div>
+
+<div>
+
+    Подвал страницы
+</div>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<div>Форма входа / отображения информации о пользователе
+#if ($user.isAuth() == true)##Пользователь залогинен
+    Привет, $user.getName()!
+
+    <form action="" method="POST">
+        <input type="hidden" name="type" value="logout" />
+        <input type="submit" value="Выйти"/>
+    </form>
+#else
+    <a href="#" onclick="$('#loginForm').show();">Войти</a>
+
+    <div id="loginForm" style="display: none;">
+        <form action="" method="POST">
+            <input type="text" name="login" />
+            <input type="password" name="password"/>
+            <input type="submit" value="Войти"/>
+            <input type="hidden" name="type" value="login"/>
+            <button type="button" onclick="$('#loginForm').hide();" >Отмена</button>
+
+        </form>
+    </div>
+#end
+
+</div>
