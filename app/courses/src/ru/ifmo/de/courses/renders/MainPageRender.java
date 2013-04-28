@@ -31,6 +31,9 @@ public class MainPageRender extends AbstractRender {
 
         velocityContext.put("mainPage", "Главная страница");
 
+        //Обязательно для каждого контекста выполнять
+        velocityContext.put("lang", page.getLang());
+
         StringWriter sw = new StringWriter();
 
         t.merge(velocityContext, sw);

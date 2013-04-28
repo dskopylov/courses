@@ -6,6 +6,8 @@ package ru.ifmo.de.courses.pojo;
  * (c) DLC NRU ITMO, 2011
  */
 
+import java.util.Properties;
+
 /**
  * Представляет собой внутреннее содержимое страницы
  */
@@ -29,6 +31,8 @@ public class Page {
     private User currentUser;
 
     private String contextPath = "";
+
+    private Properties lang;
 
     public Page(String title, String name) {
         this.title = title;
@@ -92,5 +96,13 @@ public class Page {
 
     public void setContextPath(String contextPath) {
         this.contextPath = contextPath;
+    }
+
+    public Properties getLang() {
+        return lang;
+    }
+
+    public void setLang(Properties lang) {
+        this.lang = lang;
     }
 }

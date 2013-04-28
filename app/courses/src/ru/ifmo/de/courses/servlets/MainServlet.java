@@ -152,6 +152,15 @@ public class MainServlet extends HttpServlet {
 
                 } else {
                     page.setLanguage(lang);
+
+                    if (lang.equals("ru")){
+                        page.setLang(ru);
+
+                    } else if (lang.equals("en")){
+                        page.setLang(en);
+                    }
+
+
                 }
             }
 
