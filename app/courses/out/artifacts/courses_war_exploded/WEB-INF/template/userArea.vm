@@ -1,24 +1,26 @@
-<div>Форма входа / отображения информации о пользователе
+<span>
 #if ($user.isAuth() == true)##Пользователь залогинен
-    Привет, $user.getName()!
+    $page.getLang().get("userArea.hello"), $user.getName()!
 
     <form action="" method="POST">
         <input type="hidden" name="type" value="logout" />
         <input type="submit" value="Выйти"/>
     </form>
+
 #else
-    <a href="#" onclick="$('#loginForm').show();">Войти</a>
+    <span onclick="$('#loginForm').show();">$page.getLang().get("userArea.enter")</span>
 
     <div id="loginForm" style="display: none;">
         <form action="" method="POST">
             <input type="text" name="login" />
             <input type="password" name="password"/>
-            <input type="submit" value="Войти"/>
+            <input type="submit" value="$page.getLang().get("userArea.enter")"/>
             <input type="hidden" name="type" value="login"/>
-            <button type="button" onclick="$('#loginForm').hide();" >Отмена</button>
+            <button type="button" onclick="$('#loginForm').hide();" >$page.getLang().get("all.cancel")</button>
 
         </form>
     </div>
 #end
 
-</div>
+    <a href="$page.getContextPath()/ru/">ru</a> <a href="$page.getContextPath()/en/">en</a>
+</span>

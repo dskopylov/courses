@@ -26,6 +26,7 @@ public class UserAreaRenderer extends AbstractRender{
 
         VelocityContext velocityContext = new VelocityContext();
 
+        velocityContext.put("page", page);
         velocityContext.put("user", page.getCurrentUser());
 
 

@@ -1,6 +1,4 @@
 <div>
-    Привет!
-    $mainPage
 
     <h1>$lang.get("index.hello")</h1>
 </div>

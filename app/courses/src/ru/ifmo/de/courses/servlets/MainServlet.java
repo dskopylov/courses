@@ -78,6 +78,9 @@ public class MainServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //debug
+        init();
+
         Properties p = new Properties();
 
         String fs = System.getProperty("file.separator");

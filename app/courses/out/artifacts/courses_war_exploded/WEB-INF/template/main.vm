@@ -6,26 +6,30 @@
     <link href="$page.getContextPath()/jq/css/ui-lightness/jquery-ui-1.10.2.custom.css" rel="stylesheet">
 	<script src="$page.getContextPath()/jq/js/jquery-1.9.1.js"></script>
 	<script src="$page.getContextPath()/jq/js/jquery-ui-1.10.2.custom.js"></script>
+
+
+    <link href="$page.getContextPath()/main.css" rel="stylesheet">
 </head>
 <body>
 
-<div>Шапка для всех одинаковая
-    <div>$page.getUserArea()</div>
+<div id="header">
+    $page.getLang().get("main.appName")
+    <span id="userArea">$page.getUserArea()</span>
 </div>
 
-<div>Меню</div>
+
+
+<div id="menu">Меню</div>
 
 <div>
-    Содержание страницы:
-
     <div>
         $page.getContent()
     </div>
 </div>
 
 <div>
+    Подвал
 
-    Подвал страницы
 </div>
 
 </body>
