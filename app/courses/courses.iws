@@ -89,19 +89,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="main.vm" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/template/main.vm">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="10" selection-start="715" selection-end="715" vertical-scroll-proportion="-18.75">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CourseDAO.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/daos/CourseDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="16" selection-start="1695" selection-end="1695" vertical-scroll-proportion="0.8659794">
+            <state line="68" column="35" selection-start="1919" selection-end="1919" vertical-scroll-proportion="0.30927834">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -109,10 +100,28 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Page.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/pojo/Page.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="13" selection-start="260" selection-end="260" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Course.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/pojo/Course.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="28" selection-start="301" selection-end="301" vertical-scroll-proportion="0.0">
+            <state line="40" column="37" selection-start="743" selection-end="743" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CoursePage.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/pojo/CoursePage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="0" selection-start="187" selection-end="187" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -122,15 +131,6 @@
         <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/daos/UserDAO.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="14" column="13" selection-start="336" selection-end="336" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="userArea.vm" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/template/userArea.vm">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="91" selection-start="259" selection-end="259" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -195,7 +195,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/web/WEB-INF/template/messages/ru/ru.properties" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/ru/ifmo/de/courses/pojo/Page.java" />
         <option value="$PROJECT_DIR$/src/ru/ifmo/de/courses/renders/MainPageRender.java" />
@@ -208,8 +207,9 @@
         <option value="$PROJECT_DIR$/src/ru/ifmo/de/courses/renders/UserAreaRenderer.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/template/userArea.vm" />
         <option value="$PROJECT_DIR$/web/WEB-INF/template/main.vm" />
-        <option value="$PROJECT_DIR$/src/ru/ifmo/de/courses/pojo/Course.java" />
         <option value="$PROJECT_DIR$/src/ru/ifmo/de/courses/daos/UserDAO.java" />
+        <option value="$PROJECT_DIR$/src/ru/ifmo/de/courses/pojo/CoursePage.java" />
+        <option value="$PROJECT_DIR$/src/ru/ifmo/de/courses/pojo/Course.java" />
         <option value="$PROJECT_DIR$/src/ru/ifmo/de/courses/daos/CourseDAO.java" />
       </list>
     </option>
@@ -868,25 +868,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/actions/CurrentUserAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="825" selection-end="825" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
-        <state />
-      </provider>
-      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorReferencesProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="1042" selection-end="1042" vertical-scroll-proportion="0.0" />
-      </provider>
-      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleGeneralEditorProvider">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/pojo/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="93" column="29" selection-start="1788" selection-end="1788" vertical-scroll-proportion="0.0" />
@@ -962,13 +943,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/pojo/Course.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="28" selection-start="301" selection-end="301" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/daos/UserDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="13" selection-start="336" selection-end="336" vertical-scroll-proportion="0.0">
@@ -976,9 +950,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/pojo/Page.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="13" selection-start="260" selection-end="260" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/pojo/CoursePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="187" selection-end="187" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/pojo/Course.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="37" selection-start="743" selection-end="743" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/daos/CourseDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="16" selection-start="1695" selection-end="1695" vertical-scroll-proportion="0.8659794">
+        <state line="68" column="35" selection-start="1919" selection-end="1919" vertical-scroll-proportion="0.30927834">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

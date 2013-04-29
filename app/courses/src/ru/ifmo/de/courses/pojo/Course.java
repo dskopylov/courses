@@ -12,6 +12,8 @@ public class Course {
 
     private String name = "";
 
+    private CoursePage mainPage = null;
+
     public Integer getId() {
         return id;
     }
@@ -34,5 +36,13 @@ public class Course {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public CoursePage getMainPage() {
+        return mainPage;
+    }
+
+    public void setMainPage(CoursePage mainPage) {
+        this.mainPage = mainPage;
     }
 }

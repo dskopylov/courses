@@ -1,6 +1,7 @@
 package ru.ifmo.de.courses.daos;
 
 import ru.ifmo.de.courses.pojo.Course;
+import ru.ifmo.de.courses.pojo.CoursePage;
 import ru.ifmo.de.courses.tools.MySQLManager;
 
 import java.sql.ResultSet;
@@ -41,7 +42,7 @@ public class CourseDAO extends DAO{
     }
 
     /**
-     * Возвращает курс со страницами без контента страниц
+     * Возвращает курс со страницами без контента страниц, но с контентом главной страницы курса
       * @param id
      * @return
      * @throws SQLException
@@ -52,13 +53,26 @@ public class CourseDAO extends DAO{
         ResultSet rs = super.getManager().exeQue("SELECT * FROM courses c WHERE c.`id` = ?", id);
 
         if (rs.next()){
+
+            //Сам курс
             course.setId(rs.getInt(1));
             course.setNumber(rs.getString(2));
             course.setName(rs.getString(3));
 
-            ResultSet rs2 = super.getManager().exeQue("SELECT p.id, p.course_id, p.type, p.short_name, p.short_name_eng, FROM pages p WHERE p.course_id = ?", id);
+            //Главная страница курса
+            ResultSet rs2 = super.getManager().exeQue("SELECT * FROM pages p WHERE p.course_id = ? AND p.type = 'main'", id);
 
-            while (rs2.next()){
+            if (rs2.next()){
+                CoursePage mainPage = new CoursePage();
+                //Заполнение
+
+                course.setMainPage(mainPage);
+            }
+
+            //Названия остальных страниц курса
+            ResultSet rs3 = super.getManager().exeQue("SELECT p.id, p.course_id, p.type, p.short_name, p.short_name_eng, FROM pages p WHERE p.course_id = ?", id);
+
+            while (rs3.next()){
 
             }
 
