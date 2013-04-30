@@ -29,9 +29,9 @@ public class PageRender extends AbstractRender{
 
         VelocityContext context = new VelocityContext();
 
-        UserAreaRenderer userAreaRenderer = new UserAreaRenderer(super.getRequest(), super.getResponse(), super.getVelocityEngine());
+        UserAreaRender userAreaRender = new UserAreaRender(super.getRequest(), super.getResponse(), super.getVelocityEngine());
 
-        page = userAreaRenderer.renderUA(page);
+        page = userAreaRender.renderUA(page);
 
         page.setUserArea(page.getUserArea());
 

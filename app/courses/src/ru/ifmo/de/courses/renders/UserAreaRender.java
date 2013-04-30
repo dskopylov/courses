@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.StringWriter;
 
 /**
- * ru.ifmo.de.courses.renders.UserAreaRenderer.java
+ * ru.ifmo.de.courses.renders.UserAreaRender.java
  * Created by: Dmitriy Kopylov (dima@cde.ifmo.ru)
  * (c) DLC NRU ITMO, 2011
  */
-public class UserAreaRenderer extends AbstractRender{
-    public UserAreaRenderer(HttpServletRequest request, HttpServletResponse response, VelocityEngine velocityEngine) {
+public class UserAreaRender extends AbstractRender{
+    public UserAreaRender(HttpServletRequest request, HttpServletResponse response, VelocityEngine velocityEngine) {
         super(request, response, velocityEngine);
     }
 

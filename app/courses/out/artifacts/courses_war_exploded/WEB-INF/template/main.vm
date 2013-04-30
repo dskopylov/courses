@@ -19,7 +19,7 @@
 
 
 
-<div id="menu">Меню</div>
+<div id="menu"><a href="$page.getContextPath()/$page.getLanguage()/course/">Курсы</a></div>
 
 <div>
     <div>
@@ -27,7 +27,7 @@
     </div>
 </div>
 
-<div>
+<div id="footer">
     Подвал
 
 </div>

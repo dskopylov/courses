@@ -51,17 +51,19 @@ public class CurrentUserAction extends AbstractRender{
 
                 if (user != null){
                     super.getRequest().getSession().setAttribute("currentUser", user.toString());
-
+                    manager.close();
                     return "successful";
                 }
 
             } catch (SQLException e) {
                 e.printStackTrace();
+                manager.close();
                 return "exceptionError";
             }
 
 
         }
+
         return "error";
     }
 

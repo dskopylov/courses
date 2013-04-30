@@ -6,6 +6,7 @@ import ru.ifmo.de.courses.tools.MySQLManager;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -66,20 +67,59 @@ public class CourseDAO extends DAO{
                 CoursePage mainPage = new CoursePage();
                 //Заполнение
 
+                mainPage.setId(rs2.getInt(1));
+                mainPage.setCourseId(rs2.getInt(2));
+                mainPage.setType(rs2.getString(3));
+                mainPage.setShortName(rs2.getString(4));
+                mainPage.setShortNameEng(rs2.getString(5));
+                mainPage.setContent(rs2.getString(6));
+
                 course.setMainPage(mainPage);
             }
 
             //Названия остальных страниц курса
-            ResultSet rs3 = super.getManager().exeQue("SELECT p.id, p.course_id, p.type, p.short_name, p.short_name_eng, FROM pages p WHERE p.course_id = ?", id);
+            ResultSet rs3 = super.getManager().exeQue("SELECT p.id, p.course_id, p.type, p.short_name, p.short_name_eng FROM pages p WHERE p.course_id = ?", id);
+            List<CoursePage> pages = new LinkedList<CoursePage>();
 
             while (rs3.next()){
+                CoursePage coursePage = new CoursePage();
+
+                coursePage.setId(rs3.getInt(1));
+                coursePage.setCourseId(rs3.getInt(2));
+                coursePage.setType(rs3.getString(3));
+                coursePage.setShortName(rs3.getString(4));
+                coursePage.setShortNameEng(rs3.getString(5));
+
+                pages.add(coursePage);
 
             }
+
+            course.setPages(pages);
 
         } else {
             return null;
         }
 
         return course;
+    }
+
+    public List<Course> getAllCourses() throws SQLException {
+        List<Course> courses = new LinkedList<Course>();
+
+        ResultSet rs = super.getManager().exeQue("SELECT * FROM courses");
+
+        while (rs.next()){
+            Course course = new Course();
+
+            course.setId(rs.getInt(1));
+            course.setNumber(rs.getString(2));
+            course.setName(rs.getString(3));
+
+            courses.add(course);
+
+        }
+
+        manager.close();
+        return courses;
     }
 }

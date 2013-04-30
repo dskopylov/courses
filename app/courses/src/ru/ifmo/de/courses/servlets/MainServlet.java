@@ -7,9 +7,7 @@ import org.apache.velocity.app.Velocity;
 import org.apache.velocity.app.VelocityEngine;
 import ru.ifmo.de.courses.actions.CurrentUserAction;
 import ru.ifmo.de.courses.pojo.Page;
-import ru.ifmo.de.courses.renders.ErrorRender;
-import ru.ifmo.de.courses.renders.MainPageRender;
-import ru.ifmo.de.courses.renders.PageRender;
+import ru.ifmo.de.courses.renders.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -177,6 +175,23 @@ public class MainServlet extends HttpServlet {
 
                     page = mainPageRender.renderMainPage(page);
                 } else if (requestedPath.startsWith("/course/")) {//Страница из курсов
+
+                    //Главная страница курса
+                    if (requestedPath.equals("/course/")){
+                        CourseListRender courseListRender = new CourseListRender(request, response, velocityEngine);
+                        page = courseListRender.renderListCourses(page);
+
+                    } else if (requestedPath.split("/").length == 3){//Запрошена главная страница курса
+                        CourseRender courseRender = new CourseRender(request, response, velocityEngine);
+
+                        page = courseRender.renderMainPage(page);
+
+                    } else { //Нет такой запрошенной страницы
+                        ErrorRender errorRender = new ErrorRender(request, response, velocityEngine);
+
+                        page = errorRender.renderError(page);
+
+                    }
 
                 } else { //Нет такой запрошенной страницы
                     ErrorRender errorRender = new ErrorRender(request, response, velocityEngine);
