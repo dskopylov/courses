@@ -44,7 +44,7 @@ public class CourseDAO extends DAO{
 
     /**
      * Возвращает курс со страницами без контента страниц, но с контентом главной страницы курса
-      * @param id
+     * @param id
      * @return
      * @throws SQLException
      */
@@ -101,6 +101,31 @@ public class CourseDAO extends DAO{
         }
 
         return course;
+    }
+
+    public CoursePage getCoursePage(Integer pageId){
+        ResultSet rs2 = super.getManager().exeQue("SELECT * FROM pages p WHERE p.id = ?", pageId);
+
+        try {
+            if (rs2.next()){
+                CoursePage page = new CoursePage();
+                //Заполнение
+
+                page.setId(rs2.getInt(1));
+                page.setCourseId(rs2.getInt(2));
+                page.setType(rs2.getString(3));
+                page.setShortName(rs2.getString(4));
+                page.setShortNameEng(rs2.getString(5));
+                page.setContent(rs2.getString(6));
+
+                return page;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return null;
     }
 
     public List<Course> getAllCourses() throws SQLException {

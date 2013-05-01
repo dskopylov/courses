@@ -7,6 +7,7 @@ import org.apache.velocity.app.VelocityEngine;
 import ru.ifmo.de.courses.AbstractRender;
 import ru.ifmo.de.courses.daos.CourseDAO;
 import ru.ifmo.de.courses.pojo.Course;
+import ru.ifmo.de.courses.pojo.CoursePage;
 import ru.ifmo.de.courses.pojo.Page;
 import ru.ifmo.de.courses.servlets.MainServlet;
 import ru.ifmo.de.courses.tools.MySQLManager;
@@ -55,7 +56,7 @@ public class CourseRender extends AbstractRender{
         return page;
     }
 
-    public Page renderPage(Page page){
+    public Page renderPage(Page page, String pageId){
         MySQLManager manager = new MySQLManager(MainServlet.appProp.get("db.url"),MainServlet.appProp.get("db.login"), MainServlet.appProp.get("db.pass"));
         Template t = super.getVelocityEngine().getTemplate("coursePage.vm", "utf-8");
 
@@ -67,13 +68,16 @@ public class CourseRender extends AbstractRender{
         CourseDAO courseDAO = new CourseDAO(manager);
 
         try {
-            Course course = courseDAO.getCourseWithPagesById(1);
-
 
             //Должны определить Id страницы и поставить в course.curr
+            //todo Проверку на null
 
+            //Текущая страница
+            CoursePage coursePage = courseDAO.getCoursePage(Integer.valueOf(pageId));
 
-            course.setCurr(course.getMainPage());
+            //Текущий курс
+            Course course = courseDAO.getCourseWithPagesById(coursePage.getCourseId());
+            course.setCurr(coursePage);
 
             context.put("course", course);
 
