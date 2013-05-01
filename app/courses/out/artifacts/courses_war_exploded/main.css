@@ -22,7 +22,11 @@
     vertical-align: top;
 }
 
-#footer{
+#footer {
     width: 100%;
     clear: left;
+}
+
+#courseTopMenu {
+    text-align: right;
 }

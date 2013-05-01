@@ -4,12 +4,13 @@
     <div class="courseLeft">
         <ul>
             #foreach($cpage in $course.getPages())
-                <li><a href="$cpage.getId()/">$cpage.getShortName()</a></li>
+                <li><a href="$page.getContextPath()/$page.getLanguage()/course/$course.getId()/$cpage.getId()/">$cpage.getShortName()</a></li>
             #end
         </ul>
     </div>
     <div class="courseRight">
-        2
+        <div id="courseTopMenu">Menu</div>
+        $course.getCurr().getContent()
     </div>
 
 </div>
