@@ -19,6 +19,9 @@ public class Course {
 
     private List<CoursePage> pages = new LinkedList<CoursePage>();
 
+    //Текущая страница курса
+    private CoursePage curr;
+
     public Integer getId() {
         return id;
     }
@@ -57,5 +60,13 @@ public class Course {
 
     public void setPages(List<CoursePage> pages) {
         this.pages = pages;
+    }
+
+    public CoursePage getCurr() {
+        return curr;
+    }
+
+    public void setCurr(CoursePage curr) {
+        this.curr = curr;
     }
 }

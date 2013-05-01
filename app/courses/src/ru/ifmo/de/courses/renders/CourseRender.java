@@ -40,6 +40,8 @@ public class CourseRender extends AbstractRender{
         try {
             Course course = courseDAO.getCourseWithPagesById(1);
 
+            course.setCurr(course.getMainPage());
+
             context.put("course", course);
 
         } catch (SQLException e) {
@@ -49,6 +51,41 @@ public class CourseRender extends AbstractRender{
         t.merge(context, sw);
 
         page.setContent(sw.toString());
+        manager.close();
+        return page;
+    }
+
+    public Page renderPage(Page page){
+        MySQLManager manager = new MySQLManager(MainServlet.appProp.get("db.url"),MainServlet.appProp.get("db.login"), MainServlet.appProp.get("db.pass"));
+        Template t = super.getVelocityEngine().getTemplate("coursePage.vm", "utf-8");
+
+        VelocityContext context = new VelocityContext();
+        StringWriter sw = new StringWriter();
+
+        context.put("page", page);
+
+        CourseDAO courseDAO = new CourseDAO(manager);
+
+        try {
+            Course course = courseDAO.getCourseWithPagesById(1);
+
+
+            //Должны определить Id страницы и поставить в course.curr
+
+
+            course.setCurr(course.getMainPage());
+
+            context.put("course", course);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        t.merge(context, sw);
+
+        page.setContent(sw.toString());
+        manager.close();
+
         return page;
     }
 }

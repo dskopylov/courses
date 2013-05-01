@@ -186,6 +186,11 @@ public class MainServlet extends HttpServlet {
 
                         page = courseRender.renderMainPage(page);
 
+                    } else if (requestedPath.split("/").length == 4) {//Запрошена страница курса
+                        CourseRender courseRender = new CourseRender(request, response, velocityEngine);
+
+                        page = courseRender.renderPage(page);
+
                     } else { //Нет такой запрошенной страницы
                         ErrorRender errorRender = new ErrorRender(request, response, velocityEngine);
 
