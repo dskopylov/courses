@@ -10,7 +10,7 @@ public class CoursePage {
 
     private Integer courseId;
 
-    //Тип страницы: main - главная
+    //Тип страницы: home - главная. Берется или из PageType или краткое название в одно слово по английски!
     private String type;
 
     private String shortName;

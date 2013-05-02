@@ -4,7 +4,7 @@
     $page.getLang().get("course.list.hello")<br />
 
     #foreach($c in $courses)
-        <li><a href="$c.getId()/">$c.getName()</a></li>
+        <li><a href="$c.getNumber()/home/">$c.getName()</a></li>
     #end
 
 

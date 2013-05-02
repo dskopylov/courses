@@ -77,7 +77,7 @@ public class MainServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //debug
-        init();
+        //init();
 
         Properties p = new Properties();
 
@@ -167,7 +167,7 @@ public class MainServlet extends HttpServlet {
 
             //После этого мы знаем язык в page.getLanguage(). Убираем его из requestedPath
             requestedPath = requestedPath.replaceAll( page.getLanguage() + "/","");
-
+            page.setRequestedPath(requestedPath);
 
             if (command.equals("")) {
                 if (requestedPath.equals("/") || requestedPath.equals("/index.html")) {//Запрошена главная страница
@@ -184,12 +184,30 @@ public class MainServlet extends HttpServlet {
                     } else if (requestedPath.split("/").length == 3){//Запрошена главная страница курса
                         CourseRender courseRender = new CourseRender(request, response, velocityEngine);
 
-                        page = courseRender.renderMainPage(page);
+                        page = courseRender.renderMainPage(page, requestedPath.split("/")[2]);
 
                     } else if (requestedPath.split("/").length == 4) {//Запрошена страница курса
                         CourseRender courseRender = new CourseRender(request, response, velocityEngine);
 
-                        page = courseRender.renderPage(page, requestedPath.split("/")[3]);
+                        page = courseRender.renderPage(page, requestedPath.split("/")[2], requestedPath.split("/")[3]);
+
+                    } else if (requestedPath.split("/").length == 5) {//Запрошены либо подстраницы страницы, либо аттачи страницы
+                        CourseRender courseRender = new CourseRender(request, response, velocityEngine);
+                        //Должны определить, что запрошено
+                        String[] masC = requestedPath.split("/");
+
+                        if (masC[4].equals("edit")){//Редактирование страницы
+                            page = courseRender.renderPageEdit(page, requestedPath.split("/")[2], requestedPath.split("/")[3]);
+
+                        } else if (masC[4].equals("history")){//История страницы
+
+                        } else if (masC[4].equals("discus")){//Обсуждение страницы
+
+                        } else {//Запрошен аттач страницы
+
+                        }
+
+
 
                     } else { //Нет такой запрошенной страницы
                         ErrorRender errorRender = new ErrorRender(request, response, velocityEngine);

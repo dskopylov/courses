@@ -2,6 +2,7 @@ package ru.ifmo.de.courses.daos;
 
 import ru.ifmo.de.courses.pojo.Course;
 import ru.ifmo.de.courses.pojo.CoursePage;
+import ru.ifmo.de.courses.pojo.PageType;
 import ru.ifmo.de.courses.tools.MySQLManager;
 
 import java.sql.ResultSet;
@@ -61,7 +62,7 @@ public class CourseDAO extends DAO{
             course.setName(rs.getString(3));
 
             //Главная страница курса
-            ResultSet rs2 = super.getManager().exeQue("SELECT * FROM pages p WHERE p.course_id = ? AND p.type = 'main'", id);
+            ResultSet rs2 = super.getManager().exeQue("SELECT * FROM pages p WHERE p.course_id = ? AND p.type = ?", id, PageType.home);
 
             if (rs2.next()){
                 CoursePage mainPage = new CoursePage();
@@ -103,22 +104,87 @@ public class CourseDAO extends DAO{
         return course;
     }
 
-    public CoursePage getCoursePage(Integer pageId){
-        ResultSet rs2 = super.getManager().exeQue("SELECT * FROM pages p WHERE p.id = ?", pageId);
+    /**
+     * Возвращает курс со страницами без контента страниц, но с контентом главной страницы курса
+     * @param courseNumber
+     * @return
+     * @throws SQLException
+     */
+    public Course getCourseWithPagesByCourseNumber(String courseNumber) throws SQLException {
+        Course course = new Course();
 
-        try {
+        ResultSet rs = super.getManager().exeQue("SELECT * FROM courses c WHERE c.`number` = ?", courseNumber);
+
+        if (rs.next()){
+
+            //Сам курс
+            course.setId(rs.getInt(1));
+            course.setNumber(rs.getString(2));
+            course.setName(rs.getString(3));
+
+            //Главная страница курса
+            ResultSet rs2 = super.getManager().exeQue("SELECT * FROM pages p WHERE p.course_id = ? AND p.type = ?", course.getId(), PageType.home);
+
             if (rs2.next()){
-                CoursePage page = new CoursePage();
+                CoursePage mainPage = new CoursePage();
                 //Заполнение
 
-                page.setId(rs2.getInt(1));
-                page.setCourseId(rs2.getInt(2));
-                page.setType(rs2.getString(3));
-                page.setShortName(rs2.getString(4));
-                page.setShortNameEng(rs2.getString(5));
-                page.setContent(rs2.getString(6));
+                mainPage.setId(rs2.getInt(1));
+                mainPage.setCourseId(rs2.getInt(2));
+                mainPage.setType(rs2.getString(3));
+                mainPage.setShortName(rs2.getString(4));
+                mainPage.setShortNameEng(rs2.getString(5));
+                mainPage.setContent(rs2.getString(6));
 
-                return page;
+                course.setMainPage(mainPage);
+            }
+
+            //Названия остальных страниц курса
+            ResultSet rs3 = super.getManager().exeQue("SELECT p.id, p.course_id, p.type, p.short_name, p.short_name_eng FROM pages p WHERE p.course_id = ?", course.getId());
+            List<CoursePage> pages = new LinkedList<CoursePage>();
+
+            while (rs3.next()){
+                CoursePage coursePage = new CoursePage();
+
+                coursePage.setId(rs3.getInt(1));
+                coursePage.setCourseId(rs3.getInt(2));
+                coursePage.setType(rs3.getString(3));
+                coursePage.setShortName(rs3.getString(4));
+                coursePage.setShortNameEng(rs3.getString(5));
+
+                pages.add(coursePage);
+
+            }
+
+            course.setPages(pages);
+
+        } else {
+            return null;
+        }
+
+        return course;
+    }
+
+    public CoursePage getCoursePageByType(String courseNumber, String pageType){
+        ResultSet rs = super.getManager().exeQue("SELECT * FROM courses c WHERE c.number = ?", courseNumber);
+
+        try {
+            if (rs.next()){
+                ResultSet rs2 = super.getManager().exeQue("SELECT * FROM pages p WHERE p.`type` = ? AND p.course_id = ?", pageType, rs.getInt(1));
+
+                if (rs2.next()){
+                    CoursePage page = new CoursePage();
+                    //Заполнение
+
+                    page.setId(rs2.getInt(1));
+                    page.setCourseId(rs2.getInt(2));
+                    page.setType(rs2.getString(3));
+                    page.setShortName(rs2.getString(4));
+                    page.setShortNameEng(rs2.getString(5));
+                    page.setContent(rs2.getString(6));
+
+                    return page;
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();

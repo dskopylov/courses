@@ -4,12 +4,19 @@
     <div class="courseLeft">
         <ul>
             #foreach($cpage in $course.getPages())
-                <li><a href="$page.getContextPath()/$page.getLanguage()/course/$course.getId()/$cpage.getId()/">$cpage.getShortName()</a></li>
+                <li>
+                    <a href="$page.getContextPath()/$page.getLanguage()/course/$course.getNumber()/$cpage.getType()/">$cpage.getShortName()</a>
+                </li>
             #end
         </ul>
     </div>
     <div class="courseRight">
-        <div id="courseTopMenu">Menu</div>
+        <div id="courseTopMenu">
+            <span><a href="$page.getContextPath()/$page.getLanguage()/course/$course.getNumber()/$course.getCurr().getType()/">Читать</a></span>
+            <span><a href="$page.getContextPath()/$page.getLanguage()/course/$course.getNumber()/$course.getCurr().getType()/edit/">Правка</a></span>
+            <span><a href="$page.getContextPath()/$page.getLanguage()/course/$course.getNumber()/$course.getCurr().getType()/history/">История</a></span>
+            <span><a href="$page.getContextPath()/$page.getLanguage()/course/$course.getNumber()/$course.getCurr().getType()/discus/">Обсуждение</a></span>
+        </div>
         $course.getCurr().getContent()
     </div>
 

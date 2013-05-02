@@ -27,7 +27,13 @@ public class CourseRender extends AbstractRender{
         super(request, response, velocityEngine);
     }
 
-    public Page renderMainPage(Page page){
+    /**
+     * Рендерит главную страницу курса todo проверить на используемость
+     * @param page
+     * @param courseNumber
+     * @return
+     */
+    public Page renderMainPage(Page page, String courseNumber){
         MySQLManager manager = new MySQLManager(MainServlet.appProp.get("db.url"),MainServlet.appProp.get("db.login"), MainServlet.appProp.get("db.pass"));
         Template t = super.getVelocityEngine().getTemplate("coursePage.vm", "utf-8");
 
@@ -39,7 +45,7 @@ public class CourseRender extends AbstractRender{
         CourseDAO courseDAO = new CourseDAO(manager);
 
         try {
-            Course course = courseDAO.getCourseWithPagesById(1);
+            Course course = courseDAO.getCourseWithPagesByCourseNumber(courseNumber);
 
             course.setCurr(course.getMainPage());
 
@@ -56,7 +62,14 @@ public class CourseRender extends AbstractRender{
         return page;
     }
 
-    public Page renderPage(Page page, String pageId){
+    /**
+     * Рендерит страницу курса
+     * @param page
+     * @param courseNumber
+     * @param pageType
+     * @return
+     */
+    public Page renderPage(Page page, String courseNumber, String pageType){
         MySQLManager manager = new MySQLManager(MainServlet.appProp.get("db.url"),MainServlet.appProp.get("db.login"), MainServlet.appProp.get("db.pass"));
         Template t = super.getVelocityEngine().getTemplate("coursePage.vm", "utf-8");
 
@@ -73,7 +86,51 @@ public class CourseRender extends AbstractRender{
             //todo Проверку на null
 
             //Текущая страница
-            CoursePage coursePage = courseDAO.getCoursePage(Integer.valueOf(pageId));
+            CoursePage coursePage = courseDAO.getCoursePageByType(courseNumber, pageType);
+
+            //Текущий курс
+            Course course = courseDAO.getCourseWithPagesById(coursePage.getCourseId());
+            course.setCurr(coursePage);
+
+            context.put("course", course);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        t.merge(context, sw);
+
+        page.setContent(sw.toString());
+        manager.close();
+
+        return page;
+    }
+
+    /**
+     * Рендерит страницу с редактированием страницы курса
+     * @param page
+     * @param courseNumber
+     * @param pageType
+     * @return
+     */
+    public Page renderPageEdit(Page page, String courseNumber, String pageType){
+        MySQLManager manager = new MySQLManager(MainServlet.appProp.get("db.url"),MainServlet.appProp.get("db.login"), MainServlet.appProp.get("db.pass"));
+        Template t = super.getVelocityEngine().getTemplate("coursePage.vm", "utf-8");
+
+        VelocityContext context = new VelocityContext();
+        StringWriter sw = new StringWriter();
+
+        context.put("page", page);
+
+        CourseDAO courseDAO = new CourseDAO(manager);
+
+        try {
+
+            //Должны определить Id страницы и поставить в course.curr
+            //todo Проверку на null
+
+            //Текущая страница
+            CoursePage coursePage = courseDAO.getCoursePageByType(courseNumber, pageType);
 
             //Текущий курс
             Course course = courseDAO.getCourseWithPagesById(coursePage.getCourseId());

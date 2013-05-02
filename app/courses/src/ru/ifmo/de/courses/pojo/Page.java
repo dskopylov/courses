@@ -21,7 +21,7 @@ public class Page {
     //Содержание страницы
     private String content = "";
 
-
+    //Отрендеренная поле с информацией для пользователя
     private String userArea = "";
 
     //Язык, на котором запрошена страница
@@ -30,9 +30,14 @@ public class Page {
     //Текущий пользователь
     private User currentUser;
 
+    //Путь деплоинга приложения
     private String contextPath = "";
 
+    //Язык, на котором нужно рендерить страницу
     private Properties lang;
+
+    //Путь до страницы без языка и деплоинга
+    private String requestedPath;
 
     public Page(String title, String name) {
         this.title = title;
@@ -104,5 +109,13 @@ public class Page {
 
     public void setLang(Properties lang) {
         this.lang = lang;
+    }
+
+    public String getRequestedPath() {
+        return requestedPath;
+    }
+
+    public void setRequestedPath(String requestedPath) {
+        this.requestedPath = requestedPath;
     }
 }
