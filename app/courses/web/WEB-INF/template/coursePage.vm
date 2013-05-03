@@ -5,17 +5,45 @@
         <ul>
             #foreach($cpage in $course.getPages())
                 <li>
-                    <a href="$page.getContextPath()/$page.getLanguage()/course/$course.getNumber()/$cpage.getType()/">$cpage.getShortName()</a>
+                    #if ($cpage.getType().equals($course.getCurr().getType()))
+                        $cpage.getShortName()
+                    #else
+                        <a href="$page.getContextPath()/$page.getLanguage()/course/$course.getNumber()/$cpage.getType()/">$cpage.getShortName()</a>
+
+                    #end
+
                 </li>
             #end
         </ul>
     </div>
     <div class="courseRight">
         <div id="courseTopMenu">
-            <span><a href="$page.getContextPath()/$page.getLanguage()/course/$course.getNumber()/$course.getCurr().getType()/">Читать</a></span>
-            <span><a href="$page.getContextPath()/$page.getLanguage()/course/$course.getNumber()/$course.getCurr().getType()/edit/">Правка</a></span>
-            <span><a href="$page.getContextPath()/$page.getLanguage()/course/$course.getNumber()/$course.getCurr().getType()/history/">История</a></span>
-            <span><a href="$page.getContextPath()/$page.getLanguage()/course/$course.getNumber()/$course.getCurr().getType()/discus/">Обсуждение</a></span>
+            #set ($path = $page.getContextPath() + "/" + $page.getLanguage() + "/course/" + $course.getNumber() + "/" + $course.getCurr().getType())
+
+            #if ($course.getCurr().getMode().equals("read"))
+                <span>Читать</span>
+            #else
+                <span><a href="$path/">Читать</a></span>
+            #end
+
+            #if ($course.getCurr().getMode().equals("edit"))
+                <span>Правка</span>
+            #else
+                <span><a href="$path/edit/">Правка</a></span>
+            #end
+
+            #if ($course.getCurr().getMode().equals("history"))
+                <span>История</span>
+            #else
+                <span><a href="$path/history/">История</a></span>
+            #end
+
+            #if ($course.getCurr().getMode().equals("discus"))
+                <span>Обсуждение</span>
+            #else
+                <span><a href="$path/discus/">Обсуждение</a></span>
+            #end
+
         </div>
         $course.getCurr().getContent()
     </div>

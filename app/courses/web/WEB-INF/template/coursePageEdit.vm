@@ -1,3 +1,4 @@
-<textarea rows="120" cols="50">
-    $raw
-</textarea>
+Текущая версия: $versionNumber<br />
+<textarea rows="30" cols="50">$raw</textarea>
+<br />
+<button type="button">Сохранить</button>

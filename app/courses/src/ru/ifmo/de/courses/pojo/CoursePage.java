@@ -19,6 +19,9 @@ public class CoursePage {
 
     private String content;
 
+    //Режим просмотра страницы: read, edit, history, discus
+    private String mode;
+
     public Integer getId() {
         return id;
     }
@@ -65,5 +68,13 @@ public class CoursePage {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getMode() {
+        return mode;
+    }
+
+    public void setMode(String mode) {
+        this.mode = mode;
     }
 }

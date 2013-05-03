@@ -44,7 +44,7 @@ public class CourseDAO extends DAO{
     }
 
     /**
-     * Возвращает курс со страницами без контента страниц, но с контентом главной страницы курса
+     * Возвращает курс со страницами без контента страниц, но с контентом главной страницы курса по course.id
      * @param id
      * @return
      * @throws SQLException
@@ -105,7 +105,7 @@ public class CourseDAO extends DAO{
     }
 
     /**
-     * Возвращает курс со страницами без контента страниц, но с контентом главной страницы курса
+     * Возвращает курс со страницами без контента страниц, но с контентом главной страницы курса по course.number
      * @param courseNumber
      * @return
      * @throws SQLException
@@ -165,6 +165,12 @@ public class CourseDAO extends DAO{
         return course;
     }
 
+    /**
+     * Возвращает страницу курса
+     * @param courseNumber
+     * @param pageType
+     * @return
+     */
     public CoursePage getCoursePageByType(String courseNumber, String pageType){
         ResultSet rs = super.getManager().exeQue("SELECT * FROM courses c WHERE c.number = ?", courseNumber);
 
@@ -194,6 +200,70 @@ public class CourseDAO extends DAO{
         return null;
     }
 
+    /**
+     * Возвращает курс и текущую страницу курса
+     * @param courseNumber
+     * @param pageType
+     * @return
+     * @throws java.sql.SQLException
+     */
+    public Course getCourseAndCurrPage(String courseNumber, String pageType) throws SQLException {
+        Course course = new Course();
+
+        ResultSet rs = super.getManager().exeQue("SELECT * FROM courses c WHERE c.`number` = ?", courseNumber);
+
+        if (rs.next()){
+            course.setId(rs.getInt(1));
+            course.setNumber(rs.getString(2));
+            course.setName(rs.getString(3));
+
+            //Названия остальных страниц курса
+            ResultSet rs3 = super.getManager().exeQue("SELECT p.id, p.course_id, p.type, p.short_name, p.short_name_eng FROM pages p WHERE p.course_id = ?", course.getId());
+            List<CoursePage> pages = new LinkedList<CoursePage>();
+
+            while (rs3.next()){
+                CoursePage coursePage = new CoursePage();
+
+                coursePage.setId(rs3.getInt(1));
+                coursePage.setCourseId(rs3.getInt(2));
+                coursePage.setType(rs3.getString(3));
+                coursePage.setShortName(rs3.getString(4));
+                coursePage.setShortNameEng(rs3.getString(5));
+
+                pages.add(coursePage);
+
+            }
+
+            course.setPages(pages);
+
+            //Текущая страница
+            ResultSet rs2 = super.getManager().exeQue("SELECT * FROM pages p WHERE p.`type` = ? AND p.course_id = ?", pageType, rs.getInt(1));
+
+            if (rs2.next()){
+                CoursePage page = new CoursePage();
+                //Заполнение
+
+                page.setId(rs2.getInt(1));
+                page.setCourseId(rs2.getInt(2));
+                page.setType(rs2.getString(3));
+                page.setShortName(rs2.getString(4));
+                page.setShortNameEng(rs2.getString(5));
+                page.setContent(rs2.getString(6));
+
+                course.setCurr(page);
+                return course;
+            }
+
+        }
+
+        return course;
+    }
+
+    /**
+     * Возвращает список всех курсов
+     * @return
+     * @throws SQLException
+     */
     public List<Course> getAllCourses() throws SQLException {
         List<Course> courses = new LinkedList<Course>();
 
@@ -213,4 +283,6 @@ public class CourseDAO extends DAO{
         manager.close();
         return courses;
     }
+
+
 }

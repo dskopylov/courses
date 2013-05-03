@@ -48,6 +48,7 @@ public class CourseRender extends AbstractRender{
             Course course = courseDAO.getCourseWithPagesByCourseNumber(courseNumber);
 
             course.setCurr(course.getMainPage());
+            course.getCurr().setMode("read");
 
             context.put("course", course);
 
@@ -86,12 +87,9 @@ public class CourseRender extends AbstractRender{
             //todo Проверку на null
 
             //Текущая страница
-            CoursePage coursePage = courseDAO.getCoursePageByType(courseNumber, pageType);
+            Course course = courseDAO.getCourseAndCurrPage(courseNumber, pageType);
 
-            //Текущий курс
-            Course course = courseDAO.getCourseWithPagesById(coursePage.getCourseId());
-            course.setCurr(coursePage);
-
+            course.getCurr().setMode("read");
             context.put("course", course);
 
         } catch (SQLException e) {
@@ -115,10 +113,15 @@ public class CourseRender extends AbstractRender{
      */
     public Page renderPageEdit(Page page, String courseNumber, String pageType){
         MySQLManager manager = new MySQLManager(MainServlet.appProp.get("db.url"),MainServlet.appProp.get("db.login"), MainServlet.appProp.get("db.pass"));
+
         Template t = super.getVelocityEngine().getTemplate("coursePage.vm", "utf-8");
+        Template tEdit = super.getVelocityEngine().getTemplate("coursePageEdit.vm", "utf-8");
 
         VelocityContext context = new VelocityContext();
+        VelocityContext contextEdit = new VelocityContext();
+
         StringWriter sw = new StringWriter();
+        StringWriter swEdit = new StringWriter();//Должны поставить вместо coursePage.content
 
         context.put("page", page);
 
@@ -131,6 +134,13 @@ public class CourseRender extends AbstractRender{
 
             //Текущая страница
             CoursePage coursePage = courseDAO.getCoursePageByType(courseNumber, pageType);
+            coursePage.setMode("edit");
+
+            //Для редактирования
+            contextEdit.put("raw", coursePage.getContent());
+            tEdit.merge(contextEdit, swEdit);
+
+            coursePage.setContent(swEdit.toString());
 
             //Текущий курс
             Course course = courseDAO.getCourseWithPagesById(coursePage.getCourseId());
