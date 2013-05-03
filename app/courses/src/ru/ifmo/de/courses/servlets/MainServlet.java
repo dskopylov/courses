@@ -5,6 +5,7 @@ import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 import org.apache.velocity.app.VelocityEngine;
+import ru.ifmo.de.courses.actions.CourseAction;
 import ru.ifmo.de.courses.actions.CurrentUserAction;
 import ru.ifmo.de.courses.pojo.Page;
 import ru.ifmo.de.courses.renders.*;
@@ -91,17 +92,22 @@ public class MainServlet extends HttpServlet {
 
         String command = "";
 
-        if (request.getParameter("type") != null) {//Запрошена форма входа
-            CurrentUserAction currentUserAction = new CurrentUserAction(request, response, velocityEngine);
-            if (request.getParameter("type").equals("login")) {//Вход пользователя
+        if (request.getParameter("act") != null) {//Запрошено действие
 
+            if (request.getParameter("act").equals("login")) {//Вход пользователя
+                CurrentUserAction currentUserAction = new CurrentUserAction(request, response, velocityEngine);
                 String result = currentUserAction.processLogin();
                 if (!result.equals("successful")) {
                     //Не удачный вход
                     command = "loginError";
                 }
-            } else if (request.getParameter("type").equals("logout")) {
+            } else if (request.getParameter("act").equals("logout")) {
+                CurrentUserAction currentUserAction = new CurrentUserAction(request, response, velocityEngine);
                 currentUserAction.processLogout();
+
+            } else if (request.getParameter("act").equals("courseCreate")){
+                CourseAction courseAction = new CourseAction(request, response, velocityEngine);
+                command = courseAction.createCourse();
             }
         }
 
@@ -130,7 +136,6 @@ public class MainServlet extends HttpServlet {
         page.setContextPath(request.getContextPath());
 
 
-
         //Если запрошена главная страница приложения, необходимо определить язык и отфорвадить на нужный язык
         if (requestedPath.equals("/") || requestedPath.equals("/index.html")) {//Запрошена главная страница без языка
 
@@ -145,19 +150,19 @@ public class MainServlet extends HttpServlet {
 
             String[] mas = requestedPath.split("/");
 
-            if (mas.length > 1){
+            if (mas.length > 1) {
                 String lang = mas[1];
-                if (!(lang.equals("ru") || lang.equals("en"))){
+                if (!(lang.equals("ru") || lang.equals("en"))) {
                     //Если что-то неправильно то посылаем на русский
                     response.sendRedirect(request.getContextPath() + "/" + "ru" + "/index.html");
 
                 } else {
                     page.setLanguage(lang);
 
-                    if (lang.equals("ru")){
+                    if (lang.equals("ru")) {
                         page.setLang(ru);
 
-                    } else if (lang.equals("en")){
+                    } else if (lang.equals("en")) {
                         page.setLang(en);
                     }
 
@@ -166,66 +171,47 @@ public class MainServlet extends HttpServlet {
             }
 
             //После этого мы знаем язык в page.getLanguage(). Убираем его из requestedPath
-            requestedPath = requestedPath.replaceAll( page.getLanguage() + "/","");
+            requestedPath = requestedPath.replaceAll(page.getLanguage() + "/", "");
             page.setRequestedPath(requestedPath);
 
             if (command.equals("")) {
                 if (requestedPath.equals("/") || requestedPath.equals("/index.html")) {//Запрошена главная страница
                     MainPageRender mainPageRender = new MainPageRender(request, response, velocityEngine);
-
                     page = mainPageRender.renderMainPage(page);
+
                 } else if (requestedPath.startsWith("/course/")) {//Страница из курсов
+                    page = parseCoursePage(requestedPath, request, response, page);
 
-                    //Главная страница курса
-                    if (requestedPath.equals("/course/")){
-                        CourseListRender courseListRender = new CourseListRender(request, response, velocityEngine);
-                        page = courseListRender.renderListCourses(page);
-
-                    } else if (requestedPath.split("/").length == 3){//Запрошена главная страница курса
-                        CourseRender courseRender = new CourseRender(request, response, velocityEngine);
-
-                        page = courseRender.renderMainPage(page, requestedPath.split("/")[2]);
-
-                    } else if (requestedPath.split("/").length == 4) {//Запрошена страница курса
-                        CourseRender courseRender = new CourseRender(request, response, velocityEngine);
-
-                        page = courseRender.renderPage(page, requestedPath.split("/")[2], requestedPath.split("/")[3]);
-
-                    } else if (requestedPath.split("/").length == 5) {//Запрошены либо подстраницы страницы, либо аттачи страницы
-                        CourseRender courseRender = new CourseRender(request, response, velocityEngine);
-                        //Должны определить, что запрошено
-                        String[] masC = requestedPath.split("/");
-
-                        if (masC[4].equals("edit")){//Редактирование страницы
-                            page = courseRender.renderPageEdit(page, requestedPath.split("/")[2], requestedPath.split("/")[3]);
-
-                        } else if (masC[4].equals("history")){//История страницы
-
-                        } else if (masC[4].equals("discus")){//Обсуждение страницы
-
-                        } else {//Запрошен аттач страницы
-
-                        }
-
-
-
-                    } else { //Нет такой запрошенной страницы
-                        ErrorRender errorRender = new ErrorRender(request, response, velocityEngine);
-
-                        page = errorRender.renderError(page);
-
-                    }
+                } else if (requestedPath.startsWith("/page/")) {//Другая страница
+                    page = parsePagePage(requestedPath, request, response, page);
 
                 } else { //Нет такой запрошенной страницы
                     ErrorRender errorRender = new ErrorRender(request, response, velocityEngine);
 
                     page = errorRender.renderError(page);
+
                 }
+
+
+//                { //Нет такой запрошенной страницы
+//                    ErrorRender errorRender = new ErrorRender(request, response, velocityEngine);
+//
+//                    page = errorRender.renderError(page);
+//                }
             } else {
                 if (command.equals("loginError")) {
                     ErrorRender errorRender = new ErrorRender(request, response, velocityEngine);
-
                     page = errorRender.renderLoginError(page);
+
+                } else if (command.startsWith("courseCreate")){//Команды по созданию курса
+
+                    if (command.startsWith("courseCreateSuccessful")){//Курс создан, редиректим на страницу
+                        response.sendRedirect(page.getContextPath() + "/" + page.getLanguage() + "/course/" + command.split("/")[1] + "/home/");
+
+                    } else {
+                        PageCourseRender render = new PageCourseRender(request, response, velocityEngine);
+                        page = render.renderCourseCreate(page, command);
+                    }
                 }
             }
 
@@ -236,7 +222,68 @@ public class MainServlet extends HttpServlet {
 
     }
 
-    private String detectLanguage(HttpServletRequest request){
+    /**
+     * Парсит путь для страницы из курсов и вызывает соответствующий рендер
+     * @param requestedPath
+     * @param request
+     * @param response
+     * @param page
+     * @return
+     */
+    private Page parseCoursePage(String requestedPath, HttpServletRequest request, HttpServletResponse response, Page page) {
+        //Главная страница курсов
+        if (requestedPath.equals("/course/")) {
+            CourseListRender courseListRender = new CourseListRender(request, response, velocityEngine);
+            page = courseListRender.renderListCourses(page);
+
+        } else if (requestedPath.split("/").length == 3) {//Запрошена главная страница курса
+            CourseRender courseRender = new CourseRender(request, response, velocityEngine);
+
+            page = courseRender.renderMainPage(page, requestedPath.split("/")[2]);
+
+        } else if (requestedPath.split("/").length == 4) {//Запрошена страница курса
+            CourseRender courseRender = new CourseRender(request, response, velocityEngine);
+
+            page = courseRender.renderPage(page, requestedPath.split("/")[2], requestedPath.split("/")[3]);
+
+        } else if (requestedPath.split("/").length == 5) {//Запрошены либо подстраницы страницы, либо аттачи страницы
+            CourseRender courseRender = new CourseRender(request, response, velocityEngine);
+            //Должны определить, что запрошено
+            String[] masC = requestedPath.split("/");
+
+            if (masC[4].equals("edit")) {//Редактирование страницы
+                page = courseRender.renderPageEdit(page, requestedPath.split("/")[2], requestedPath.split("/")[3]);
+
+            } else if (masC[4].equals("history")) {//История страницы
+
+            } else if (masC[4].equals("discus")) {//Обсуждение страницы
+
+            } else {//Запрошен аттач страницы
+
+            }
+
+        }
+
+        return page;
+    }
+
+    /**
+     * Парсит путь для страницы из страниц и вызывает соответсвующий рендер
+     * @param requestedPath
+     * @param request
+     * @param response
+     * @param page
+     * @return
+     */
+    private Page parsePagePage(String requestedPath, HttpServletRequest request, HttpServletResponse response, Page page) {
+        if (requestedPath.equals("/page/createCourse/")){
+            PageCourseRender render = new PageCourseRender(request, response, velocityEngine);
+            page = render.renderCourseCreate(page, "");
+        }
+        return page;
+    }
+
+    private String detectLanguage(HttpServletRequest request) {
         return "ru";
     }
 }

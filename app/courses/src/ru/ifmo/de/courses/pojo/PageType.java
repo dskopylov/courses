@@ -15,7 +15,7 @@ public class PageType {
     //"Главная" страница курса
     public static final String home = "home";
 
-    //Программа курса
+    //"Программа курса"
     public static final String program = "program";
 
     //"Литература"

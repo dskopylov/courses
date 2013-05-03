@@ -3,7 +3,7 @@
     $page.getLang().get("userArea.hello"), $user.getName()!
 
     <form action="" method="POST">
-        <input type="hidden" name="type" value="logout" />
+        <input type="hidden" name="act" value="logout" />
         <input type="submit" value="Выйти"/>
     </form>
 
@@ -15,7 +15,7 @@
             <input type="text" name="login" />
             <input type="password" name="password"/>
             <input type="submit" value="$page.getLang().get("userArea.enter")"/>
-            <input type="hidden" name="type" value="login"/>
+            <input type="hidden" name="act" value="login"/>
             <button type="button" onclick="$('#loginForm').hide();" >$page.getLang().get("all.cancel")</button>
 
         </form>

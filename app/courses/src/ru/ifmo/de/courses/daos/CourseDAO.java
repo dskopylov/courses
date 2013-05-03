@@ -284,5 +284,14 @@ public class CourseDAO extends DAO{
         return courses;
     }
 
+    /**
+     * Проверяет, есть ли course.number, если нет,то создает курс и необходимые страницы.
+     * @param course
+     * @return
+     */
+    public String createCourse(Course course){
 
+
+        return "successful";
+    }
 }

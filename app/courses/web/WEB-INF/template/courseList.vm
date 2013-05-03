@@ -7,6 +7,6 @@
         <li><a href="$c.getNumber()/home/">$c.getName()</a></li>
     #end
 
-
+    <a href="$page.getContextPath()/$page.getLanguage()/page/createCourse/">Создать курс</a>
 
 </div>

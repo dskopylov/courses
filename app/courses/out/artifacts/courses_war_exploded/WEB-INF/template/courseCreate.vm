@@ -1,0 +1,7 @@
+Создание курса<br />
+<form method="POST">
+    <input type="hidden" name="act" value="courseCreate"/>
+    Номер курса <input type="text" name="number" value="$number">$message<br />
+    Название курса <input type="text" name="name" value="$name"><br />
+    <input type="submit" value="Создать">
+</form>

@@ -104,66 +104,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CoursePage.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/pojo/CoursePage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="13" selection-start="174" selection-end="174" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Test.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/test/Test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="103" column="42" selection-start="4008" selection-end="4008" vertical-scroll-proportion="0.7478992">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Page.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/pojo/Page.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="32" selection-start="272" selection-end="788" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CourseRender.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/renders/CourseRender.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="142" column="51" selection-start="4690" selection-end="4690" vertical-scroll-proportion="0.0">
+            <state line="47" column="0" selection-start="1676" selection-end="1676" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="coursePage.vm" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/template/coursePage.vm">
+      <file leaf-file-name="CourseDAO.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/daos/CourseDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="45" selection-start="262" selection-end="262" vertical-scroll-proportion="-5.0">
+            <state line="113" column="0" selection-start="3479" selection-end="3479" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="coursePageEdit.vm" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/template/coursePageEdit.vm">
+      <file leaf-file-name="StringRoutine.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/tools/StringRoutine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="40" selection-start="130" selection-end="130" vertical-scroll-proportion="-1.875">
+            <state line="17" column="24" selection-start="492" selection-end="492" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="L2B.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/test/L2B.java">
+      <file leaf-file-name="MainServlet.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/servlets/MainServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="128" column="45" selection-start="5598" selection-end="5598" vertical-scroll-proportion="-6.68">
+            <state line="208" column="141" selection-start="7881" selection-end="7881" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CourseAction.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/actions/CourseAction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="123" column="123" selection-start="5065" selection-end="5065" vertical-scroll-proportion="0.61864406">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -174,7 +154,7 @@
       <file leaf-file-name="DiffTool.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/tools/DiffTool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="62" selection-start="2665" selection-end="2665" vertical-scroll-proportion="0.0">
+            <state line="22" column="13" selection-start="540" selection-end="540" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -182,10 +162,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CourseDAO.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/daos/CourseDAO.java">
+      <file leaf-file-name="PageType.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/pojo/PageType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="286" column="4" selection-start="9109" selection-end="9109" vertical-scroll-proportion="0.0">
+            <state line="29" column="29" selection-start="627" selection-end="649" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CoursePage.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/pojo/CoursePage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="13" selection-start="364" selection-end="364" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MySQLManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/tools/MySQLManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="86" column="0" selection-start="2177" selection-end="2177" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="courseList.vm" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/template/courseList.vm">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="60" selection-start="254" selection-end="254" vertical-scroll-proportion="-5.625">
               <folding />
             </state>
           </provider>
@@ -205,14 +212,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/web/main.css" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/template/main.vm" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/ru/ifmo/de/courses/pojo/PageType.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/template/courseList.vm" />
-        <option value="$PROJECT_DIR$/src/ru/ifmo/de/courses/servlets/MainServlet.java" />
-        <option value="$PROJECT_DIR$/src/ru/ifmo/de/courses/pojo/Page.java" />
-        <option value="$PROJECT_DIR$/src/ru/ifmo/de/courses/pojo/CoursePage.java" />
         <option value="$PROJECT_DIR$/src/ru/ifmo/de/courses/renders/CourseRender.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/template/coursePage.vm" />
         <option value="$PROJECT_DIR$/src/ru/ifmo/de/courses/Test.java" />
@@ -221,6 +220,14 @@
         <option value="$PROJECT_DIR$/src/ru/ifmo/de/courses/tools/DiffTool.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/template/coursePageEdit.vm" />
         <option value="$PROJECT_DIR$/src/ru/ifmo/de/courses/daos/CourseDAO.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/template/courseList.vm" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/template/userArea.vm" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/template/courseCreate.vm" />
+        <option value="$PROJECT_DIR$/src/ru/ifmo/de/courses/renders/PageCourseRender.java" />
+        <option value="$PROJECT_DIR$/src/ru/ifmo/de/courses/tools/StringRoutine.java" />
+        <option value="$PROJECT_DIR$/src/ru/ifmo/de/courses/pojo/PageType.java" />
+        <option value="$PROJECT_DIR$/src/ru/ifmo/de/courses/servlets/MainServlet.java" />
+        <option value="$PROJECT_DIR$/src/ru/ifmo/de/courses/actions/CourseAction.java" />
       </list>
     </option>
   </component>
@@ -395,7 +402,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
+              <option name="myItemId" value="servlets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -417,29 +424,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="renders" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="courses" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="courses" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="courses" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="daos" />
+              <option name="myItemId" value="pojo" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -815,9 +800,10 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3377193" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.6015748" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4093567" sideWeight="0.0" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39473686" sideWeight="0.0" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -828,12 +814,11 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20390625" sideWeight="0.5906433" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20390625" sideWeight="0.6052632" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24921875" sideWeight="0.5906433" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879817" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -884,105 +869,118 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/renders/CourseListRender.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/pojo/Course.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="70" selection-start="1578" selection-end="1578" vertical-scroll-proportion="0.0" />
+        <state line="10" column="13" selection-start="223" selection-end="223" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/servlets/MainServlet.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/actions/CurrentUserAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="10" selection-start="2538" selection-end="2538" vertical-scroll-proportion="0.0" />
+        <state line="18" column="13" selection-start="572" selection-end="572" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/AbstractRender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="22" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/renders/PageCourseRender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="0" selection-start="1122" selection-end="1122" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/template/userArea.vm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="271" selection-end="271" vertical-scroll-proportion="-5.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/template/courseCreate.vm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="79" selection-start="180" selection-end="180" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/template/courseList.vm">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="41" selection-start="160" selection-end="160" vertical-scroll-proportion="0.0">
+        <state line="9" column="60" selection-start="254" selection-end="254" vertical-scroll-proportion="-5.625">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/template/main.vm">
+    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/tools/StringRoutine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="24" selection-start="634" selection-end="634" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/pojo/PageType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="64" selection-start="543" selection-end="543" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/renders/CourseRender.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="142" column="51" selection-start="4690" selection-end="4690" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/template/coursePage.vm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="45" selection-start="262" selection-end="262" vertical-scroll-proportion="-5.0">
+        <state line="17" column="24" selection-start="492" selection-end="492" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/pojo/CoursePage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="13" selection-start="174" selection-end="174" vertical-scroll-proportion="0.0">
+        <state line="13" column="13" selection-start="364" selection-end="364" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/pojo/Page.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/daos/CourseDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="32" selection-start="272" selection-end="788" vertical-scroll-proportion="0.0">
+        <state line="113" column="0" selection-start="3479" selection-end="3479" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/java_diff_utils.jar!/difflib/DiffUtils.class">
+    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/renders/CourseRender.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="51" selection-start="1682" selection-end="1682" vertical-scroll-proportion="0.7492163">
+        <state line="47" column="0" selection-start="1676" selection-end="1676" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/template/coursePageEdit.vm">
+    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/pojo/PageType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="40" selection-start="130" selection-end="130" vertical-scroll-proportion="-1.875">
+        <state line="29" column="29" selection-start="627" selection-end="649" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/tools/MySQLManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="0" selection-start="2177" selection-end="2177" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/servlets/MainServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="208" column="141" selection-start="7881" selection-end="7881" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/tools/DiffTool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="62" selection-start="2665" selection-end="2665" vertical-scroll-proportion="0.0">
+        <state line="22" column="13" selection-start="540" selection-end="540" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/daos/CourseDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/actions/CourseAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="286" column="4" selection-start="9109" selection-end="9109" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/test/L2B.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="128" column="45" selection-start="5598" selection-end="5598" vertical-scroll-proportion="-6.68">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/de/courses/test/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="42" selection-start="4008" selection-end="4008" vertical-scroll-proportion="0.7478992">
+        <state line="123" column="123" selection-start="5065" selection-end="5065" vertical-scroll-proportion="0.61864406">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
