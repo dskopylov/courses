@@ -1,7 +1,6 @@
-﻿-- Скрипт сгенерирован Devart dbForge Studio for MySQL, Версия 5.0.50.1
--- Домашняя страница продукта: http://www.devart.com/ru/dbforge/mysql/studio
--- Дата скрипта: 01.05.2013 18:13:36
--- Версия сервера: 5.1.49-3
+﻿-- Скрипт сгенерирован Devart dbForge Studio for MySQL, Версия 4.50.315.1
+-- Дата: 14.05.2013 22:45:08
+-- Версия сервера: 5.5.30-1.1
 -- Версия клиента: 4.1
 
 -- 
@@ -30,8 +29,8 @@ CREATE TABLE courses (
   PRIMARY KEY (id)
 )
 ENGINE = INNODB
-AUTO_INCREMENT = 2
-AVG_ROW_LENGTH = 16384
+AUTO_INCREMENT = 14
+AVG_ROW_LENGTH = 5461
 CHARACTER SET utf8
 COLLATE utf8_general_ci;
 
@@ -47,23 +46,6 @@ CREATE TABLE groups (
 ENGINE = INNODB
 AUTO_INCREMENT = 3
 AVG_ROW_LENGTH = 8192
-CHARACTER SET utf8
-COLLATE utf8_general_ci;
-
---
--- Описание для таблицы page_hist
---
-DROP TABLE IF EXISTS page_hist;
-CREATE TABLE page_hist (
-  id INT(11) NOT NULL AUTO_INCREMENT,
-  `datetime` DATETIME NOT NULL,
-  user_id INT(11) NOT NULL,
-  diff TEXT NOT NULL,
-  version INT(11) NOT NULL,
-  PRIMARY KEY (id)
-)
-ENGINE = INNODB
-AUTO_INCREMENT = 1
 CHARACTER SET utf8
 COLLATE utf8_general_ci;
 
@@ -84,8 +66,8 @@ CREATE TABLE pages (
     REFERENCES courses(id) ON DELETE RESTRICT ON UPDATE RESTRICT
 )
 ENGINE = INNODB
-AUTO_INCREMENT = 3
-AVG_ROW_LENGTH = 8192
+AUTO_INCREMENT = 24
+AVG_ROW_LENGTH = 862
 CHARACTER SET utf8
 COLLATE utf8_general_ci;
 
@@ -111,14 +93,34 @@ AVG_ROW_LENGTH = 16384
 CHARACTER SET utf8
 COLLATE utf8_general_ci;
 
--- При генерации скрипта для объектов типа 'UDF'ы' произошла ошибка:
--- SELECT command denied to user 'coursesdev'@'ws02.cde.ifmo.ru' for table 'func'
+--
+-- Описание для таблицы page_hist
+--
+DROP TABLE IF EXISTS page_hist;
+CREATE TABLE page_hist (
+  id INT(11) NOT NULL AUTO_INCREMENT,
+  date_time DATETIME NOT NULL,
+  user_id INT(11) NOT NULL,
+  diff TEXT NOT NULL,
+  version INT(11) NOT NULL,
+  page_id INT(11) NOT NULL,
+  PRIMARY KEY (id),
+  INDEX FK_page_hist_pages_id (page_id),
+  CONSTRAINT FK_page_hist_pages_id FOREIGN KEY (page_id)
+    REFERENCES pages(id) ON DELETE RESTRICT ON UPDATE RESTRICT
+)
+ENGINE = INNODB
+AUTO_INCREMENT = 1
+CHARACTER SET utf8
+COLLATE utf8_general_ci;
 
 -- 
 -- Вывод данных для таблицы courses
 --
 INSERT INTO courses VALUES 
-  (1, 'DLC0001', 'Тестовый курс от ЦДО НИУ ИТМО');
+  (1, 'DLC0001', 'Тестовый курс от ЦДО НИУ ИТМО'),
+  (12, 'DLC0002', 'Тестовый 2'),
+  (13, '1', '1');
 
 -- 
 -- Вывод данных для таблицы groups
@@ -128,22 +130,39 @@ INSERT INTO groups VALUES
   (2, 'Users');
 
 -- 
--- Вывод данных для таблицы page_hist
---
--- Таблица не содержит данных
-
--- 
 -- Вывод данных для таблицы pages
 --
 INSERT INTO pages VALUES 
-  (1, 1, 'main', 'Главная', 'cdo_test', 'Тестовы курс от ЦДО НИУ ИТМО\r\n2013 г.'),
-  (2, 1, 'program', 'Программа курса', 'programma_kursa', 'Программа курса');
+  (1, 1, 'home', 'Главная', 'cdo_test', 'Добро пожаловать на Тестовый курс от ЦДО НИУ ИТМО\r\n2013 г.'),
+  (2, 1, 'program', 'Программа', 'programma_kursa', 'Программа курса'),
+  (3, 1, 'literature', 'Литература', '', ''),
+  (4, 1, 'exercise', 'Упражнения', '', ''),
+  (5, 1, 'training', 'Практикумы', '', ''),
+  (6, 1, 'infoResources', 'Информационные ресурсы', '', ''),
+  (7, 1, 'lection1', 'Лекция 1', '', ' '),
+  (12, 12, 'home', 'Главная', '', ''),
+  (13, 12, 'program', 'Программа курса', '', ''),
+  (14, 12, 'literature', 'Литература', '', ''),
+  (15, 12, 'exercise', 'Упражнения', '', ''),
+  (16, 12, 'training', 'Практикумы', '', ''),
+  (17, 12, 'infoResources', 'Информационные ресурсы', '', ''),
+  (18, 13, 'home', 'Главная', '', ''),
+  (19, 13, 'program', 'Программа курса', '', ''),
+  (20, 13, 'literature', 'Литература', '', ''),
+  (21, 13, 'exercise', 'Упражнения', '', ''),
+  (22, 13, 'training', 'Практикумы', '', ''),
+  (23, 13, 'infoResources', 'Информационные ресурсы', '', '');
 
 -- 
 -- Вывод данных для таблицы users
 --
 INSERT INTO users VALUES 
   (1, 'root', '21232f297a57a5a743894a0e4a801fc3', 'Администратор', 'dima@cde.ifmo.ru', 1);
+
+-- 
+-- Вывод данных для таблицы page_hist
+--
+-- Таблица не содержит данных
 
 -- 
 -- Включение внешних ключей
