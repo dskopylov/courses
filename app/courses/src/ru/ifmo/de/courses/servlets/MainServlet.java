@@ -108,6 +108,9 @@ public class MainServlet extends HttpServlet {
             } else if (request.getParameter("act").equals("courseCreate")){
                 CourseAction courseAction = new CourseAction(request, response, velocityEngine);
                 command = courseAction.createCourse();
+
+            } else if (request.getParameter("act").equals("coursePageUpdate")){
+
             }
         }
 

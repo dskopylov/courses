@@ -136,8 +136,13 @@ public class CourseRender extends AbstractRender{
             CoursePage coursePage = courseDAO.getCoursePageByType(courseNumber, pageType);
             coursePage.setMode("edit");
 
+            String versionNumber = courseDAO.getCurrentPageVersion(coursePage.getId());
+
+
+
             //Для редактирования
             contextEdit.put("raw", coursePage.getContent());
+            contextEdit.put("versionNumber", versionNumber);
             tEdit.merge(contextEdit, swEdit);
 
             coursePage.setContent(swEdit.toString());

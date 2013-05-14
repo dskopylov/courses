@@ -17,6 +17,7 @@ public class CoursePage {
 
     private String shortNameEng;
 
+    //Сырой контент страницы
     private String content;
 
     //Режим просмотра страницы: read, edit, history, discus

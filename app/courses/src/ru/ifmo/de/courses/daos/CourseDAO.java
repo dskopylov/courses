@@ -285,6 +285,26 @@ public class CourseDAO extends DAO{
     }
 
     /**
+     * Возвращает текущую версию страницы по идентификатору страницы
+     * @param pageId
+     * @return
+     */
+    public String getCurrentPageVersion(Integer pageId){
+        ResultSet rs = super.getManager().exeQue("SELECT * FROM page_hist ph WHERE ph.`id` = ? ORDER BY ph.datetime DESC LIMIT 1", pageId);
+
+        try {
+            if (rs.next()){
+                return rs.getString(5);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return "0";
+    }
+
+    /**
      * Проверяет, есть ли course.number, если нет,то создает курс и необходимые страницы.
      * @param course
      * @return

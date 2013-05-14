@@ -1,4 +1,8 @@
 Текущая версия: $versionNumber<br />
-<textarea rows="30" cols="50">$raw</textarea>
-<br />
-<button type="button">Сохранить</button>
+<form method="POST">
+    <input type="hidden" name="act" value="coursePageUpdate"/>
+    <textarea rows="30" cols="50">$raw</textarea>
+    <br />
+
+    <input type="submit" value="Сохранить" />
+</form>
