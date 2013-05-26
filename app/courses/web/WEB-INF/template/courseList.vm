@@ -1,12 +1,17 @@
 ##Главная страница всех курсов
 
 <div>
-    $page.getLang().get("course.list.hello")<br />
+    <h3>
+        $page.getLang().get("course.list.hello")
+    </h3>
 
-    #foreach($c in $courses)
-        <li><a href="$c.getNumber()/home/">$c.getName()</a></li>
-    #end
+    <ul >
+        #foreach($c in $courses)
+            <li ><a href="$c.getNumber()/home/">$c.getName()</a></li>
+        #end
+    </ul>
+    <br />
+    <button class="btn btn-primary" onclick="location.href='$page.getContextPath()/$page.getLanguage()/page/createCourse/'">Создать курс</button>
 
-    <a href="$page.getContextPath()/$page.getLanguage()/page/createCourse/">Создать курс</a>
 
 </div>

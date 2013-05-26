@@ -2,11 +2,14 @@ package ru.ifmo.de.courses.daos;
 
 import ru.ifmo.de.courses.pojo.Course;
 import ru.ifmo.de.courses.pojo.CoursePage;
+import ru.ifmo.de.courses.pojo.CoursePageHistory;
 import ru.ifmo.de.courses.pojo.PageType;
+import ru.ifmo.de.courses.tools.DiffTool;
 import ru.ifmo.de.courses.tools.MySQLManager;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -290,7 +293,7 @@ public class CourseDAO extends DAO{
      * @return
      */
     public String getCurrentPageVersion(Integer pageId){
-        ResultSet rs = super.getManager().exeQue("SELECT * FROM page_hist ph WHERE ph.`id` = ? ORDER BY ph.datetime DESC LIMIT 1", pageId);
+        ResultSet rs = super.getManager().exeQue("SELECT * FROM page_hist ph WHERE ph.page_id = ? ORDER BY ph.date_time DESC LIMIT 1", pageId);
 
         try {
             if (rs.next()){
@@ -302,6 +305,105 @@ public class CourseDAO extends DAO{
 
 
         return "0";
+    }
+
+    /**
+     * Возвращает список всех названий ревизий по идентификатору страницы
+     * @param pageId
+     * @return
+     */
+    public List<CoursePageHistory> getPageHistory(Integer pageId){
+        List<CoursePageHistory> list = new ArrayList<CoursePageHistory>();
+
+        ResultSet rs = super.getManager().exeQue("SELECT * FROM page_hist ph WHERE ph.page_id = ? ORDER BY ph.date_time DESC", pageId);
+
+        try {
+            while (rs.next()){
+                CoursePageHistory cph = new CoursePageHistory();
+                cph.setId(rs.getInt(1));
+                cph.setDateTime(rs.getString(2));
+                cph.setVersion(rs.getInt(5));
+                cph.setPageId(rs.getInt(6));
+                cph.setUser(rs.getInt(3));
+
+                list.add(cph);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+
+    /**
+     * Возвращает курс и страницу курса по типу на определенную ревизию
+     * @param courseNumber
+     * @param pageType
+     * @return
+     * @throws java.sql.SQLException
+     */
+    public Course getCourseAndRevPage(String courseNumber, String pageType, Integer revNum) throws SQLException {
+        Course course = new Course();
+
+        ResultSet rs = super.getManager().exeQue("SELECT * FROM courses c WHERE c.`number` = ?", courseNumber);
+
+        if (rs.next()){
+            course.setId(rs.getInt(1));
+            course.setNumber(rs.getString(2));
+            course.setName(rs.getString(3));
+
+            //Названия остальных страниц курса
+            ResultSet rs3 = super.getManager().exeQue("SELECT p.id, p.course_id, p.type, p.short_name, p.short_name_eng FROM pages p WHERE p.course_id = ?", course.getId());
+            List<CoursePage> pages = new LinkedList<CoursePage>();
+
+            while (rs3.next()){
+                CoursePage coursePage = new CoursePage();
+
+                coursePage.setId(rs3.getInt(1));
+                coursePage.setCourseId(rs3.getInt(2));
+                coursePage.setType(rs3.getString(3));
+                coursePage.setShortName(rs3.getString(4));
+                coursePage.setShortNameEng(rs3.getString(5));
+
+                pages.add(coursePage);
+
+            }
+
+            course.setPages(pages);
+
+            //Текущая страница
+            ResultSet rs2 = super.getManager().exeQue("SELECT * FROM pages p WHERE p.`type` = ? AND p.course_id = ?", pageType, rs.getInt(1));
+
+            if (rs2.next()){
+                CoursePage page = new CoursePage();
+                //Заполнение
+
+                page.setId(rs2.getInt(1));
+                page.setCourseId(rs2.getInt(2));
+                page.setType(rs2.getString(3));
+                page.setShortName(rs2.getString(4));
+                page.setShortNameEng(rs2.getString(5));
+
+                course.setCurr(page);
+
+                String content = "";
+
+                ResultSet rs4 = super.getManager().exeQue("SELECT * FROM page_hist ph WHERE ph.page_id = ? AND ph.version <= ? ORDER BY ph.date_time ASC", course.getCurr().getId(), revNum);
+                //Собираем историю
+                while (rs4.next()){
+                    content = DiffTool.applyPatch(content, rs4.getString(4));
+                }
+
+                course.getCurr().setContent(content);
+
+                return course;
+            }
+
+
+
+        }
+
+        return course;
     }
 
     /**

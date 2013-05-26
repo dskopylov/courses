@@ -41,4 +41,29 @@ public class UserDAO extends DAO {
 
         return null;
     }
+
+    public User getUserByLogin(String login) throws SQLException {
+        ResultSet rs = super.getManager().exeQue("SELECT * FROM users u WHERE u.login = ?", login);
+
+        if (rs.next()){
+            return getUserById(rs.getInt(1));
+        }
+
+        return null;
+    }
+
+    public User getUserByEmail(String email) throws SQLException {
+        ResultSet rs = super.getManager().exeQue("SELECT * FROM users u WHERE u.email = ?", email);
+
+        if (rs.next()){
+            return getUserById(rs.getInt(1));
+        }
+
+        return null;
+    }
+
+    public void addUser(User user){
+        super.getManager().exeUpd("INSERT INTO users (login, password, name, email, group_id) VALUES (?, md5(?), ?, ?, 2)",
+        user.getLogin(), user.getPassword(), user.getName(), user.getEmail());
+    }
 }

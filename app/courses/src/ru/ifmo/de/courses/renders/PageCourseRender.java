@@ -5,6 +5,7 @@ import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import ru.ifmo.de.courses.AbstractRender;
 import ru.ifmo.de.courses.pojo.Page;
+import ru.ifmo.de.courses.tools.StringRoutine;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,8 +36,8 @@ public class PageCourseRender extends AbstractRender {
         VelocityContext context = new VelocityContext();
 
         if (error.startsWith("courseCreate")) {
-            context.put("number", super.getRequest().getParameter("number"));
-            context.put("name", super.getRequest().getParameter("name"));
+            context.put("number", StringRoutine.isoToUtf(super.getRequest().getParameter("number")));
+            context.put("name", StringRoutine.isoToUtf(super.getRequest().getParameter("name")));
 
             if (error.equals("courseCreateAlreadyExist")) {
                 context.put("message", "Курс с таким номером существует!");
@@ -46,6 +47,9 @@ public class PageCourseRender extends AbstractRender {
 
             } else if (error.equals("courseCreateSpacesInNumber")) {
                 context.put("message", "В номере курса не может быть пробел!");
+
+            } else if (error.equals("courseCreateNoUser")) {
+                context.put("message", "Необходимо войти в систему!!");
 
             }
         } else {

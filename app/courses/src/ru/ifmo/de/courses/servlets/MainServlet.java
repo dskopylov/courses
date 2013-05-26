@@ -7,6 +7,7 @@ import org.apache.velocity.app.Velocity;
 import org.apache.velocity.app.VelocityEngine;
 import ru.ifmo.de.courses.actions.CourseAction;
 import ru.ifmo.de.courses.actions.CurrentUserAction;
+import ru.ifmo.de.courses.actions.UserAction;
 import ru.ifmo.de.courses.pojo.Page;
 import ru.ifmo.de.courses.renders.*;
 
@@ -110,7 +111,12 @@ public class MainServlet extends HttpServlet {
                 command = courseAction.createCourse();
 
             } else if (request.getParameter("act").equals("coursePageUpdate")){
+                CourseAction ca = new CourseAction(request, response, velocityEngine);
+                command = ca.updatePage();
 
+            } else if (request.getParameter("act").equals("userReg")){
+                UserAction ua = new UserAction(request, response, velocityEngine);
+                command = ua.regUser();
             }
         }
 
@@ -195,12 +201,6 @@ public class MainServlet extends HttpServlet {
 
                 }
 
-
-//                { //Нет такой запрошенной страницы
-//                    ErrorRender errorRender = new ErrorRender(request, response, velocityEngine);
-//
-//                    page = errorRender.renderError(page);
-//                }
             } else {
                 if (command.equals("loginError")) {
                     ErrorRender errorRender = new ErrorRender(request, response, velocityEngine);
@@ -214,6 +214,18 @@ public class MainServlet extends HttpServlet {
                     } else {
                         PageCourseRender render = new PageCourseRender(request, response, velocityEngine);
                         page = render.renderCourseCreate(page, command);
+                    }
+                } else if (command.startsWith("coursePage")){
+                    page = parseCoursePage(requestedPath, request, response, page);
+
+                } else if (command.startsWith("userReg")){
+                    if (command.equals("userRegSuccessful")){//Здесь мы знаем, что пользователь создан
+
+                        response.sendRedirect(page.getContextPath() + "/" + page.getLanguage() + "/page/hello/");
+
+                    } else {
+                        UserRender ur = new UserRender(request, response, velocityEngine);
+                        page = ur.renderReg(page, command);
                     }
                 }
             }
@@ -258,6 +270,11 @@ public class MainServlet extends HttpServlet {
                 page = courseRender.renderPageEdit(page, requestedPath.split("/")[2], requestedPath.split("/")[3]);
 
             } else if (masC[4].equals("history")) {//История страницы
+                if (request.getParameter("revNum") != null){//Нужно отобразить страницу на конкретную ревизию
+                    page = courseRender.renderPageForRev(page, requestedPath.split("/")[2], requestedPath.split("/")[3]);
+                } else {
+                    page = courseRender.renderPageHistory(page, requestedPath.split("/")[2], requestedPath.split("/")[3]);
+                }
 
             } else if (masC[4].equals("discus")) {//Обсуждение страницы
 
@@ -282,6 +299,21 @@ public class MainServlet extends HttpServlet {
         if (requestedPath.equals("/page/createCourse/")){
             PageCourseRender render = new PageCourseRender(request, response, velocityEngine);
             page = render.renderCourseCreate(page, "");
+
+        } else if (requestedPath.equals("/page/userReg/")){
+            UserRender ur = new UserRender(request, response, velocityEngine);
+            page = ur.renderReg(page, "");
+
+        } else if (requestedPath.startsWith("/page/user/")){
+            UserRender ur = new UserRender(request, response, velocityEngine);
+            if (requestedPath.split("/").length == 4){
+                Integer userId = Integer.valueOf(requestedPath.split("/")[3]);
+                page = ur.renderPage(page, userId);
+            }
+
+        } else if (requestedPath.equals("/page/hello/")){
+            UserRender ur = new UserRender(request, response, velocityEngine);
+            page = ur.renderHello(page);
         }
         return page;
     }

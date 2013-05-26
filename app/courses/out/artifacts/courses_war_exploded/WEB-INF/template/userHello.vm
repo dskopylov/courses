@@ -1,0 +1,9 @@
+<div class="hero-unit">
+  <h1>Привет!</h1>
+  <p>Поздравляем, Вы зарегестрировались в Репозитории учебно-иетодических материалов НИУ ИТМО!</p>
+  <p>
+    <a class="btn btn-primary btn-large" href="$page.getContextPath()/$page.getLanguage()/course/">
+      Перейти к курсам
+    </a>
+  </p>
+</div>

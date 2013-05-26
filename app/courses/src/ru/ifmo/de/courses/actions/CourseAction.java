@@ -4,6 +4,7 @@ import org.apache.velocity.app.VelocityEngine;
 import ru.ifmo.de.courses.AbstractRender;
 import ru.ifmo.de.courses.pojo.CoursePage;
 import ru.ifmo.de.courses.pojo.PageType;
+import ru.ifmo.de.courses.pojo.User;
 import ru.ifmo.de.courses.servlets.MainServlet;
 import ru.ifmo.de.courses.tools.DiffTool;
 import ru.ifmo.de.courses.tools.MySQLManager;
@@ -31,6 +32,10 @@ public class CourseAction extends AbstractRender {
      * @return номер курса, на который нужно отфорводить пользователя
      */
     public String createCourse(){
+        if (super.getRequest().getSession().getAttribute("currentUser") == null){
+            return "courseCreateNoUser";
+        }
+
         String courseNumber = super.getRequest().getParameter("number");
         String courseName = super.getRequest().getParameter("name");
 
@@ -117,6 +122,10 @@ public class CourseAction extends AbstractRender {
 
             diffStr = DiffTool.getDiff(lastStr, newStr);
 
+            if (diffStr.equals("")){
+                return "coursePageUpdateNothing";
+            }
+
             manager.exeUpd("UPDATE pages p SET p.content = ? WHERE p.`id` = ?", newStr, page.getId());
 
             lastRevNum++;
@@ -127,9 +136,30 @@ public class CourseAction extends AbstractRender {
 
         } catch (SQLException e) {
             e.printStackTrace();
+            return "coursePageUpdateError";
         }
 
         manager.close();
-        return "coursePageUpdateError";
+        return "coursePageUpdateSuccessful";
+    }
+
+    public String updatePage(){
+        //Создаем новую страницу, получаем Id текущего пользователя
+
+        CoursePage cp = new CoursePage();
+
+        if (super.getRequest().getParameter("pageId") == null || super.getRequest().getParameter("content") == null){
+            return "coursePageUpdateError";
+        }
+        cp.setId(Integer.valueOf(super.getRequest().getParameter("pageId")));
+        cp.setContent(StringRoutine.isoToUtf(super.getRequest().getParameter("content")));
+
+        if (super.getRequest().getSession().getAttribute("currentUser") == null){
+            return "coursePageUpdateError";
+        }
+        User u = User.parseUser(super.getRequest().getSession().getAttribute("currentUser").toString());
+
+        return updatePage(cp, u.getId());
+
     }
 }

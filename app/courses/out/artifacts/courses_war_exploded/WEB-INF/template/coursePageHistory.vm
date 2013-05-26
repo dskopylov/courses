@@ -1,0 +1,31 @@
+<div class="alert alert-info">
+    Текущая версия: $versionNumber
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Действия</th>
+        <th>Версия</th>
+        <th>Дата</th>
+        <th>Id пользователя</th>
+    </tr>
+    </thead>
+    <tbody>
+        #foreach($oneHist in $hist)
+        <tr>
+            <td>
+                <form method="POST" style="margin-bottom: 0px;">
+                    <input type="hidden" name="pageId" value="$pageId">
+                    <input type="hidden" name="revNum" value="$oneHist.getVersion()">
+                    <input type="submit" value="Просмотр" class="btn">
+                </form>
+            </td>
+            <td>$oneHist.getVersion()</td>
+            <td>$oneHist.getDateTime()</td>
+            <td><a href="$page.getContextPath()/$page.getLanguage()/page/user/$oneHist.getUser()/">$oneHist.getUser()</a></td>
+        </tr>
+        #end
+    </tbody>
+</table>
+
+

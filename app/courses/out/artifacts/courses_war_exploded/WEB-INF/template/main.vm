@@ -3,34 +3,90 @@
 <head>
     <title>$page.getTitle()</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link href="$page.getContextPath()/jq/css/ui-lightness/jquery-ui-1.10.2.custom.css" rel="stylesheet">
-	<script src="$page.getContextPath()/jq/js/jquery-1.9.1.js"></script>
-	<script src="$page.getContextPath()/jq/js/jquery-ui-1.10.2.custom.js"></script>
 
+    <link href="$page.getContextPath()/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+    <script type="text/javascript" src="$page.getContextPath()/jq/jquery-1.8.3.js"></script>
 
     <link href="$page.getContextPath()/main.css" rel="stylesheet">
 </head>
 <body>
+<span id="userArea"></span>
+<div class="container">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <a class="brand" href="#">$page.getLang().get("main.appName")</a>
+            <ul class="nav">
+                <li><a href = "$page.getContextPath()/">Главная</a></li>
+                <li><a href="$page.getContextPath()/$page.getLanguage()/course/">Курсы</a></li>
 
-<div id="header">
-    $page.getLang().get("main.appName")
-    <span id="userArea">$page.getUserArea()</span>
-</div>
+            </ul>
+            <ul class="nav pull-right">
+                <li><a href="$page.getContextPath()/ru/" style="font-weight: normal;">ru</a></li>
+                <li><a href="$page.getContextPath()/en/" style="font-weight: normal;">en</a></li>
+                $page.getUserArea()
+            </ul>
+
+        </div>
+
+    </div>
 
 
 
-<div id="menu"><a href="$page.getContextPath()/$page.getLanguage()/course/">Курсы</a></div>
-
-<div>
     <div>
-        $page.getContent()
+        <div>
+            $page.getContent()
+        </div>
+    </div>
+
+    <div class="navbar navbar-fixed-bottom">
+        <div class="navbar-inner">
+            <div style="text-align: center;">
+                (c) DLC NRU ITMO
+            </div>
+        </div>
+
     </div>
 </div>
 
-<div id="footer">
-    Подвал
+<form id="loginForm" method="post" action="" class="form-horizontal" style="display: none;">
+    <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
-</div>
+        <div class="modal-header">
+            <h3 id="myModalLabel">Вход</h3>
+        </div>
+        <div class="modal-body">
 
+            <div class="control-group">
+                <div class="controls">
+                    <input type="text" name="login" id="login" placeholder="Логин"/>
+                </div>
+            </div>
+
+
+            <div class="control-group">
+                <div class="controls">
+                    <input type="password" name="password" id="password" placeholder="Пароль"/>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+            <a class="btn" href="$page.getContextPath()/$page.getLanguage()/page/userReg/">Зарегистрироваться</a>
+
+            <input type="button" class="btn" value="Отмена" onclick="$('#loginForm').hide();return false;"/>
+            <input type="hidden" name="act" value="login"/>
+
+
+            <button class="btn btn-primary">$page.getLang().get("userArea.enter")</button>
+        </div>
+
+    </div>
+</form>
+
+<form action="" method="POST" name="logoutForm">
+    <input type="hidden" name="act" value="logout">
+</form>
 </body>
 </html>

@@ -1,7 +1,27 @@
-Создание курса<br />
-<form method="POST">
+<h3>Создание курса</h3>
+#if (!$message.equals(""))
+    <div class="alert alert-error">$message</div>
+#end
+<form method="POST" class="form-horizontal">
+    <div class="control-group">
+        <label class="control-label" for="number">Номер курса </label>
+        <div class="controls">
+            <input type="text" name="number" id="number" value="$number">
+        </div>
+    </div>
     <input type="hidden" name="act" value="courseCreate"/>
-    Номер курса <input type="text" name="number" value="$number">$message<br />
-    Название курса <input type="text" name="name" value="$name"><br />
-    <input type="submit" value="Создать">
+    <div class="control-group">
+        <label class="control-label" for="name">Название курса</label>
+        <div class="controls">
+            <input type="text" name="name" id="name" value="$name">
+        </div>
+    </div>
+
+    <div class="control-group">
+
+        <div class="controls">
+            <input type="submit" value="Создать" class="btn btn-primary">
+        </div>
+    </div>
+
 </form>

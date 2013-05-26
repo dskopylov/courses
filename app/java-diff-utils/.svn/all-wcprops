@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 22
+/svn/!svn/ver/58/trunk
+END
+java-diff-utils.iml
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/51/trunk/java-diff-utils.iml
+END
+pom.xml
+K 25
+svn:wc:ra_dav:version-url
+V 30
+/svn/!svn/ver/58/trunk/pom.xml
+END
+build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 32
+/svn/!svn/ver/51/trunk/build.xml
+END

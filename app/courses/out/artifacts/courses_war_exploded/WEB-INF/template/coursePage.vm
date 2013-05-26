@@ -1,51 +1,66 @@
 ##Страница курса
 
-<div>
-    <div class="courseLeft">
-        <ul>
-            #foreach($cpage in $course.getPages())
-                <li>
-                    #if ($cpage.getType().equals($course.getCurr().getType()))
-                        $cpage.getShortName()
-                    #else
-                        <a href="$page.getContextPath()/$page.getLanguage()/course/$course.getNumber()/$cpage.getType()/">$cpage.getShortName()</a>
+<h3>$course.getName()</h3>
 
+<div class="row">
+    <div class="span3">
+        <ul class="nav nav-list">
+            #foreach($cpage in $course.getPages())
+
+                    #if ($cpage.getType().equals($course.getCurr().getType()))
+                        <li class="active">
+                            <a>$cpage.getShortName()</a>
+                        </li>
+                    #else
+                        <li>
+                            <a href="$page.getContextPath()/$page.getLanguage()/course/$course.getNumber()/$cpage.getType()/">$cpage.getShortName()</a>
+                        </li>
                     #end
 
-                </li>
+
             #end
         </ul>
     </div>
-    <div class="courseRight">
+    <div class="span9">
         <div id="courseTopMenu">
-            #set ($path = $page.getContextPath() + "/" + $page.getLanguage() + "/course/" + $course.getNumber() + "/" + $course.getCurr().getType())
+            <ul class="nav nav-tabs">
+                #set ($path = $page.getContextPath() + "/" + $page.getLanguage() + "/course/" + $course.getNumber() + "/" + $course.getCurr().getType())
+                #if ($course.getCurr().getMode().equals("read"))
+                    <li class="active">
+                        <a href="#">Читать</a>
+                    </li>
+                #else
+                    <li >
+                        <a href="$path/">Читать</a>
+                    </li>
+                #end
 
-            #if ($course.getCurr().getMode().equals("read"))
-                <span>Читать</span>
-            #else
-                <span><a href="$path/">Читать</a></span>
-            #end
+                #if ($course.getCurr().getMode().equals("edit"))
+                    <li class="active">
+                        <a href="#">Правка</a>
+                    </li>
+                #else
+                    <li >
+                        <a href="$path/edit/">Правка</a>
+                    </li>
+                #end
 
-            #if ($course.getCurr().getMode().equals("edit"))
-                <span>Правка</span>
-            #else
-                <span><a href="$path/edit/">Правка</a></span>
-            #end
+                #if ($course.getCurr().getMode().equals("history"))
+                    <li class="active">
+                        <a href="#">История</a>
+                    </li>
+                #else
+                    <li >
+                        <a href="$path/history/">История</a>
+                    </li>
+                #end
 
-            #if ($course.getCurr().getMode().equals("history"))
-                <span>История</span>
-            #else
-                <span><a href="$path/history/">История</a></span>
-            #end
-
-            #if ($course.getCurr().getMode().equals("discus"))
-                <span>Обсуждение</span>
-            #else
-                <span><a href="$path/discus/">Обсуждение</a></span>
-            #end
+            </ul>
 
         </div>
-        $course.getCurr().getContent()
+        <div >
+            $course.getCurr().getContent()
+        </div>
     </div>
 
 </div>

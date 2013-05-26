@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="java-diff-utils:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/java_diff_utils_jar</output-path>
+    <root id="archive" name="java_diff_utils.jar">
+      <element id="module-output" name="java-diff-utils" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>

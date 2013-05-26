@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/54/trunk/src/main/java/difflib
+END
+DiffException.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/51/trunk/src/main/java/difflib/DiffException.java
+END
+Delta.java
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/52/trunk/src/main/java/difflib/Delta.java
+END
+DiffUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/52/trunk/src/main/java/difflib/DiffUtils.java
+END
+ChangeDelta.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/52/trunk/src/main/java/difflib/ChangeDelta.java
+END
+Patch.java
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/52/trunk/src/main/java/difflib/Patch.java
+END
+DiffRow.java
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/51/trunk/src/main/java/difflib/DiffRow.java
+END
+StringUtills.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/52/trunk/src/main/java/difflib/StringUtills.java
+END
+DiffRowGenerator.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/54/trunk/src/main/java/difflib/DiffRowGenerator.java
+END
+Chunk.java
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/54/trunk/src/main/java/difflib/Chunk.java
+END
+DeleteDelta.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/52/trunk/src/main/java/difflib/DeleteDelta.java
+END
+InsertDelta.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/52/trunk/src/main/java/difflib/InsertDelta.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/51/trunk/src/main/java/difflib/package.html
+END
+DiffAlgorithm.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/52/trunk/src/main/java/difflib/DiffAlgorithm.java
+END
+DeltaComparator.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/52/trunk/src/main/java/difflib/DeltaComparator.java
+END
+PatchFailedException.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/51/trunk/src/main/java/difflib/PatchFailedException.java
+END

@@ -1,0 +1,17 @@
+<h3>Страница пользователя</h3>
+<table class="table">
+    <tr>
+        <td><strong>Имя пользователя</strong></td>
+        <td>$user.getName()</td>
+    </tr>
+
+    <tr>
+        <td><strong>Логин</strong></td>
+        <td>$user.getLogin()</td>
+    </tr>
+
+    <tr>
+        <td><strong>E-mail</strong></td>
+        <td>$user.getEmail()</td>
+    </tr>
+</table>

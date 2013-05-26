@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/52/trunk/src/main/java/difflib/myers
+END
+DiffNode.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/51/trunk/src/main/java/difflib/myers/DiffNode.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/51/trunk/src/main/java/difflib/myers/package.html
+END
+DifferentiationFailedException.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/51/trunk/src/main/java/difflib/myers/DifferentiationFailedException.java
+END
+Equalizer.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/52/trunk/src/main/java/difflib/myers/Equalizer.java
+END
+Snake.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/51/trunk/src/main/java/difflib/myers/Snake.java
+END
+PathNode.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/51/trunk/src/main/java/difflib/myers/PathNode.java
+END
+DiffException.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/51/trunk/src/main/java/difflib/myers/DiffException.java
+END
+MyersDiff.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/52/trunk/src/main/java/difflib/myers/MyersDiff.java
+END

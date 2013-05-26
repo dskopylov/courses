@@ -1,8 +1,12 @@
-Текущая версия: $versionNumber<br />
+<div class="alert alert-info">
+    Текущая версия: $versionNumber
+</div>
+
 <form method="POST">
     <input type="hidden" name="act" value="coursePageUpdate"/>
-    <textarea rows="30" cols="50">$raw</textarea>
+    <input type="hidden" name="pageId" value="$pageId"/>
+    <textarea name="content" style="width: 100%; min-height: 300px;">$raw</textarea>
     <br />
 
-    <input type="submit" value="Сохранить" />
+    <input type="submit" value="Сохранить" class="btn btn-primary"/>
 </form>
